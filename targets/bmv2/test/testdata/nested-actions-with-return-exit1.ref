@@ -1,0 +1,13 @@
+Eliminated node at line 44: ret = ret + 1;
+Eliminated node at line 47: ret = ret + 2;
+Eliminated node at line 48: } else if (h.eth_hdr.eth_type == x) {
+Eliminated node at line (unknown): { ret_0/ret = ret_0/ret + 16;
+  ret_0/ret = ret_0/ret + 64; }
+Eliminated node at line 78: t1.apply();
+statement_count_before:15
+statement_count_after:7
+cyclomatic_complexity:9
+num_parsers_paths:1
+num_updates_processed:0
+num_respecializations:0
+

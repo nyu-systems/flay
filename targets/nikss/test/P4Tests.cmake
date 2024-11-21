@@ -17,6 +17,8 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(bpftool)
 
+# FIXME: Remove once TLS verification is fixed.
+set (CMAKE_TLS_VERIFY FALSE)
 FetchContent_Declare(trex
   URL https://trex-tgn.cisco.com/trex/release/v3.05.tar.gz
   URL_HASH
@@ -28,6 +30,7 @@ FetchContent_Declare(trex
   GIT_PROGRESS TRUE
 )
 FetchContent_MakeAvailable(trex)
+set (CMAKE_TLS_VERIFY TRUE)
 
 # TODO: Remove this once the Nikss FetchContent initalization is fixed.
 set (FETCHCONTENT_UPDATES_DISCONNECTED_NIKSS_CTL ON)

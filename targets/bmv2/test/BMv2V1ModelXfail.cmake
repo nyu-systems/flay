@@ -9,6 +9,7 @@ p4tools_add_xfail_reason(
                # Type_Declaration.
   header-stack-ops-bmv2.p4 # Unknown method member expression: hdr_0.h2; of type header h2_t
   issue4739.p4 # type ForStatement not implemented in the core stepper
+  loop-3-clause-tricky2.p4 # type ForStatement not implemented in the core stepper
 )
 
 p4tools_add_xfail_reason(
