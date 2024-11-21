@@ -50,7 +50,7 @@ const ProgramInfo *V1ModelFlayTarget::produceProgramInfoImpl(
         argumentsToTypeDeclarations(&compilerResult.getProgram(), mainDecl->arguments);
 
     // We should have six arguments.
-    BUG_CHECK(blocks.size() == 6, "%1%: The BMV2 architecture requires 6 pipes. Received %2%."_cs,
+    BUG_CHECK(blocks.size() == 6, "%1%: The BMV2 architecture requires 6 pipes. Received %2%.",
               mainDecl, blocks.size());
 
     ordered_map<cstring, const IR::Type_Declaration *> programmableBlocks;

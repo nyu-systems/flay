@@ -426,15 +426,15 @@ const ExternMethodImpls EXTERN_METHOD_IMPLS(
           const auto *actionDecl =
               state.findDecl(&externInfo.externObjectRef)->checkedTo<IR::Declaration_Instance>();
           const auto *actionType = actionDecl->type->checkedTo<IR::Type_Specialized>();
-          BUG_CHECK(actionType->arguments->size() == 3, "Expected 3 arguments, got %1%"_cs,
+          BUG_CHECK(actionType->arguments->size() == 3, "Expected 3 arguments, got %1%",
                     actionType->arguments->size());
           const auto *valueType = actionType->arguments->at(0);  // T
           const auto &components = actionDecl->initializer->components;
-          BUG_CHECK(components.size() == 1, "Expected 1 component, got %1%"_cs, components.size());
+          BUG_CHECK(components.size() == 1, "Expected 1 component, got %1%", components.size());
           const auto *applyDecl = components.at(0)->checkedTo<IR::Function>();
           const auto *applyParameters = applyDecl->type->parameters;
           BUG_CHECK(applyParameters->size() == 1 || applyParameters->size() == 2,
-                    "Expected 1 or 2 parameters, got %1%"_cs, applyParameters->size());
+                    "Expected 1 or 2 parameters, got %1%", applyParameters->size());
 
           const auto &valueName = applyParameters->parameters.at(0)->name.name;
           auto valueLabel =
@@ -534,15 +534,15 @@ const ExternMethodImpls EXTERN_METHOD_IMPLS(
           const auto *actionDecl =
               state.findDecl(&externInfo.externObjectRef)->checkedTo<IR::Declaration_Instance>();
           const auto *actionType = actionDecl->type->checkedTo<IR::Type_Specialized>();
-          BUG_CHECK(actionType->arguments->size() == 2, "Expected 2 arguments, got %1%"_cs,
+          BUG_CHECK(actionType->arguments->size() == 2, "Expected 2 arguments, got %1%",
                     actionType->arguments->size());
           const auto *valueType = actionType->arguments->at(0);  // T
           const auto &components = actionDecl->initializer->components;
-          BUG_CHECK(components.size() == 1, "Expected 1 component, got %1%"_cs, components.size());
+          BUG_CHECK(components.size() == 1, "Expected 1 component, got %1%", components.size());
           const auto *applyDecl = components.at(0)->checkedTo<IR::Function>();
           const auto *applyParameters = applyDecl->type->parameters;
           BUG_CHECK(applyParameters->size() == 1 || applyParameters->size() == 2,
-                    "Expected 1 or 2 parameters, got %1%"_cs, applyParameters->size());
+                    "Expected 1 or 2 parameters, got %1%", applyParameters->size());
 
           const auto &valueName = applyParameters->parameters.at(0)->name.name;
           auto valueLabel =
@@ -579,8 +579,7 @@ const ExternMethodImpls EXTERN_METHOD_IMPLS(
                       state.set(paramRef, argument);
                   }
               } else {
-                  P4C_UNIMPLEMENTED("Unsupported parameter type %1%"_cs,
-                                    paramType->node_type_name());
+                  P4C_UNIMPLEMENTED("Unsupported parameter type %1%", paramType->node_type_name());
               }
           }
           auto &applyStepper = FlayTarget::getStepper(

@@ -51,7 +51,7 @@ bool P4RuntimeToIRMapper::preorder(const IR::Type_Header *hdr) {
         return false;
     }
     const auto *controllerHeaderAnnotation = hdr->getAnnotation(cstring("controller_header"));
-    auto headerName = controllerHeaderAnnotation->body[0]->text;
+    auto headerName = controllerHeaderAnnotation->getUnparsed().at(0)->text;
     auto p4RuntimeId = p4InfoMaps.lookUpP4RuntimeId(headerName);
     if (p4RuntimeId.has_value()) {
         idToIrMap.emplace(p4RuntimeId.value(), hdr);
