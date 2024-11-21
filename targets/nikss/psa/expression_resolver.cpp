@@ -38,7 +38,7 @@ const ExternMethodImpls EXTERN_METHOD_IMPLS({
          const auto *externDecl = externInfo.state.findDecl(&externInfo.externObjectRef)
                                       ->checkedTo<IR::Declaration_Instance>();
          const auto *externType = externDecl->type->checkedTo<IR::Type_Specialized>();
-         BUG_CHECK(externType->arguments->size() == 1, "Expected 1 type argument, got %1%"_cs,
+         BUG_CHECK(externType->arguments->size() == 1, "Expected 1 type argument, got %1%",
                    externType->arguments->size());
          const auto *valueType = externType->arguments->at(0);  // T
          auto randomLabel = externInfo.externObjectRef.path->toString() + "_" +
@@ -131,7 +131,7 @@ const ExternMethodImpls EXTERN_METHOD_IMPLS({
          const auto *externDecl = externInfo.state.findDecl(&externInfo.externObjectRef)
                                       ->checkedTo<IR::Declaration_Instance>();
          const auto *externType = externDecl->type->checkedTo<IR::Type_Specialized>();
-         BUG_CHECK(externType->arguments->size() == 2, "Expected 2 type arguments, got %1%"_cs,
+         BUG_CHECK(externType->arguments->size() == 2, "Expected 2 type arguments, got %1%",
                    externType->arguments->size());
          const auto *valueType = externType->arguments->at(0);  // T
          auto registerLabel = externInfo.externObjectRef.path->toString() + "_" +
@@ -325,7 +325,7 @@ const ExternMethodImpls EXTERN_METHOD_IMPLS({
          const auto *externDecl = externInfo.state.findDecl(&externInfo.externObjectRef)
                                       ->checkedTo<IR::Declaration_Instance>();
          const auto *externType = externDecl->type->checkedTo<IR::Type_Specialized>();
-         BUG_CHECK(externType->arguments->size() == 1, "Expected 1 type argument, got %1%"_cs,
+         BUG_CHECK(externType->arguments->size() == 1, "Expected 1 type argument, got %1%",
                    externType->arguments->size());
          const auto *valueType = externType->arguments->at(0);  // O
 
@@ -354,7 +354,7 @@ const ExternMethodImpls EXTERN_METHOD_IMPLS({
          const auto *externDecl = externInfo.state.findDecl(&externInfo.externObjectRef)
                                       ->checkedTo<IR::Declaration_Instance>();
          const auto *externType = externDecl->type->checkedTo<IR::Type_Specialized>();
-         BUG_CHECK(externType->arguments->size() == 1, "Expected 1 type argument, got %1%"_cs,
+         BUG_CHECK(externType->arguments->size() == 1, "Expected 1 type argument, got %1%",
                    externType->arguments->size());
          const auto *valueType = externType->arguments->at(0);  // O
 
@@ -396,7 +396,7 @@ const ExternMethodImpls EXTERN_METHOD_IMPLS({
          const auto *externDecl = externInfo.state.findDecl(&externInfo.externObjectRef)
                                       ->checkedTo<IR::Declaration_Instance>();
          const auto *externType = externDecl->type->checkedTo<IR::Type_Specialized>();
-         BUG_CHECK(externType->arguments->size() == 1, "Expected 1 type argument, got %1%"_cs,
+         BUG_CHECK(externType->arguments->size() == 1, "Expected 1 type argument, got %1%",
                    externType->arguments->size());
          const auto *valueType = externType->arguments->at(0);  // W
          // We do not calculate the checksum for now and instead use a dummy.

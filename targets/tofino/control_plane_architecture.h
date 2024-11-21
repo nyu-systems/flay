@@ -350,10 +350,12 @@ class P4RuntimeArchHandlerTofino final : public P4RuntimeArchHandlerIface {
                     [](cstring name) { return name == "max_group_size"; });
         profile->set_with_selector(actionProfile.type == ActionProfileType::INDIRECT_WITH_SELECTOR);
         profile->set_size(actionProfile.size);
-        auto maxGroupSizeAnnotation = actionProfile.annotations->getAnnotation("max_group_size"_cs);
-        if (maxGroupSizeAnnotation) {
+        const auto *maxGroupSizeAnnotation =
+            actionProfile.annotations->getAnnotation("max_group_size"_cs);
+        if (maxGroupSizeAnnotation != nullptr) {
             if (actionProfile.type == ActionProfileType::INDIRECT_WITH_SELECTOR) {
-                auto maxGroupSizeConstant = maxGroupSizeAnnotation->expr[0]->to<IR::Constant>();
+                const auto *maxGroupSizeConstant =
+                    maxGroupSizeAnnotation->getExpr(0)->to<IR::Constant>();
                 CHECK_NULL(maxGroupSizeConstant);
                 profile->set_max_group_size(maxGroupSizeConstant->asInt());
             } else {
