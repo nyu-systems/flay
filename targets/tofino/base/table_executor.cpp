@@ -36,8 +36,8 @@ const TableMatchKey *TofinoBaseTableExecutor::computeTargetMatchType(
     }
     // Action selector entries are not part of the match but we still need to create a key.
     if (matchType == TofinoBaseConstants::MATCH_KIND_SELECTOR) {
-        // cstring keyName = tableName + "_selector_" + fieldName;
-        return new SelectorMatchKey(symbolicTablePrefix(), fieldName, keyExpression);
+        cstring keyName = tableName + "_selector_" + fieldName;
+        return new SelectorMatchKey(symbolicTablePrefix(), keyName, keyExpression);
     }
     if (matchType == TofinoBaseConstants::MATCH_KIND_RANGE) {
         return new RangeTableMatchKey(symbolicTablePrefix(), fieldName, keyExpression);
