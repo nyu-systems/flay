@@ -1,4 +1,4 @@
-Eliminated node at line 51: adjust_lkp_fields.apply();
+Eliminated node at line 42: adjust_lkp_fields.apply();
 statement_count_before:1
 statement_count_after:0
 cyclomatic_complexity:0

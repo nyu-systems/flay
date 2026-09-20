@@ -1,4 +1,4 @@
-Eliminated node at line 40: h.eth_hdr.eth_type = (!b ? 16w1 : simple_fun(h.h));
+Eliminated node at line 46: h.eth_hdr.eth_type = (!b ? 16w1 : simple_fun(h.h));
 statement_count_before:8
 statement_count_after:7
 cyclomatic_complexity:1

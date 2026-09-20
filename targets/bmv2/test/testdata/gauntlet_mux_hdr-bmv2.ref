@@ -1,7 +1,7 @@
-Eliminated node at line 26: if (tmp2[0].a <= 3) {
-Eliminated node at line 47: simple_table.apply();
-Replaced node at line 26: if (tmp2[0].a <= 3) { with 0
-Replaced node at line 40: sm.egress_spec : exact @name("key") ; with 0
+Eliminated node at line 32: if (tmp2[0].a <= 3) {
+Eliminated node at line 53: simple_table.apply();
+Replaced node at line 32: if (tmp2[0].a <= 3) { with 0
+Replaced node at line 46: sm.egress_spec : exact @name("key") ; with 0
 statement_count_before:10
 statement_count_after:8
 cyclomatic_complexity:2

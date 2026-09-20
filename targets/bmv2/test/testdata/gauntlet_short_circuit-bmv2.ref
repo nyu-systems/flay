@@ -1,4 +1,4 @@
-Eliminated node at line 55: h.b.a = (8w1 != do_function(h.b.b) || false) ? 8w1 : 8w2;
+Eliminated node at line 61: h.b.a = (8w1 != do_function(h.b.b) || false) ? 8w1 : 8w2;
 statement_count_before:8
 statement_count_after:7
 cyclomatic_complexity:1

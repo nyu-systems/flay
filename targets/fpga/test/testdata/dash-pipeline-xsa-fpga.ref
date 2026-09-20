@@ -87,6 +87,7 @@ Eliminated node at line 969: if (meta.meter_policy_en == 1) {
 Eliminated node at line 975: meta.meter_class = meta.policy_meter_class;
 Eliminated node at line 983: meter_bucket.apply();
 Eliminated node at line 989: eni_meter.apply();
+Replaced node at line 593: meta.encap_data.underlay_sip = (underlay_sip == 0 ? meta.encap_data.underlay_sip : underlay_sip); with 0
 Replaced node at line 1044: meta.appliance_id: ternary; with 0
 Replaced node at line 1103: meta.eni_id: exact; with 0
 Replaced node at line 1118: meta.vnet_id : exact; with 0

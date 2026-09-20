@@ -1,5 +1,5 @@
-Eliminated node at line 91: tns.apply();
-Replaced node at line 82: local_metadata.row0.alt0.valid : exact; with 0
+Eliminated node at line 84: tns.apply();
+Replaced node at line 75: local_metadata.row0.alt0.valid : exact; with 0
 statement_count_before:12
 statement_count_after:11
 cyclomatic_complexity:1

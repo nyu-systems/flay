@@ -1,6 +1,6 @@
-Eliminated node at line 40: if (simple_table.apply().hit) {
-Eliminated node at line 40: if (simple_table.apply().hit) {
-Replaced node at line 32: tmp_val : exact @name("dummy") ; with 1
+Eliminated node at line 46: if (simple_table.apply().hit) {
+Eliminated node at line 46: if (simple_table.apply().hit) {
+Replaced node at line 38: tmp_val : exact @name("dummy") ; with 1
 statement_count_before:6
 statement_count_after:5
 cyclomatic_complexity:1

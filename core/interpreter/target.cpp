@@ -169,15 +169,10 @@ MidEnd FlayTarget::mkMidEnd(const CompilerOptions &options) const {
             // Local copy propagation and dead-code elimination.
             // Skip this if skipSideEffectOrdering is set.
             // TODO: Pass FlayOptions as argument here.
-            FlayOptions::get().skipSideEffectOrdering()
-                ? nullptr
-                : new P4::LocalCopyPropagation(
-                      typeMap, nullptr,
-                      [](const Visitor::Context * /*context*/, const IR::Expression * /*expr*/) {
-                          return true;
-                      }),
+            FlayOptions::get().skipSideEffectOrdering() ? nullptr
+                                                        : new P4::LocalCopyPropagation(typeMap),
             // Simplify control flow that has constants as conditions.
-            new P4::SimplifyControlFlow(typeMap),
+            new P4::SimplifyControlFlow(typeMap, true),
             // Compress member access to struct expressions.
             new P4::ConstantFolding(typeMap),
         }),
@@ -203,7 +198,7 @@ PassManager FlayTarget::mkPrivateMidEnd(const CompilerOptions &options, P4::Refe
         new P4::RemoveExits(typeMap),
         // Remove loops from parsers by unrolling them as far as the stack indices allow.
         // TODO: Get rid of this pass.
-        new P4::ParsersUnroll(true, refMap, typeMap),
+        new P4::ParsersUnroll(P4::ParserConfig{.unroll = true}, refMap, typeMap),
         new P4::TypeChecking(refMap, typeMap, true),
         // Convert enums and errors to bit<32>.
         new P4::ConvertEnums(typeMap, new EnumOn32Bits()),

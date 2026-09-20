@@ -1,7 +1,7 @@
-Eliminated node at line 164: action1: // Fall-through
-Eliminated node at line 165: action2: {
-Eliminated node at line 169: post_tbl3.apply();
-Eliminated node at line 170: if (meta.dropped) {
+Eliminated node at line 170: action1: // Fall-through
+Eliminated node at line 171: action2: {
+Eliminated node at line 175: post_tbl3.apply();
+Eliminated node at line 176: if (meta.dropped) {
 statement_count_before:16
 statement_count_after:13
 cyclomatic_complexity:11

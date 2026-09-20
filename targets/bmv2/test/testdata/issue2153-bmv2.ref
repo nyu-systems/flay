@@ -1,6 +1,6 @@
-Eliminated node at line 73: do_something: {
-Eliminated node at line 78: if (tmp_condition > 0) {
-Replaced node at line 78: if (tmp_condition > 0) { with 0
+Eliminated node at line 64: do_something: {
+Eliminated node at line 69: if (tmp_condition > 0) {
+Replaced node at line 69: if (tmp_condition > 0) { with 0
 statement_count_before:8
 statement_count_after:6
 cyclomatic_complexity:4

@@ -2,7 +2,6 @@
 #define BACKENDS_P4TOOLS_MODULES_FLAY_CORE_INTERPRETER_EXECUTION_STATE_H_
 
 #include <optional>
-#include <set>
 
 #include "backends/p4tools/common/core/abstract_execution_state.h"
 #include "backends/p4tools/modules/flay/core/interpreter/node_map.h"
@@ -17,10 +16,6 @@ class ExecutionState : public AbstractExecutionState {
     /// The condition necessary to reach this particular execution state. Defaults
     /// to true.
     const IR::Expression *executionCondition;
-
-    /// Keeps track of the parserStates which were visited to avoid infinite
-    /// loops.
-    std::set<int> visitedParserIds;
 
     /// Keeps track of the annotations on individual nodes in the program, for example reachability.
     NodeAnnotationMap _nodeAnnotationMap;
@@ -40,12 +35,6 @@ class ExecutionState : public AbstractExecutionState {
     /// state.
     void set(const IR::StateVariable &var, const IR::Expression *value) override;
 
-    /// Add a parser ID to the list of visited parser IDs.
-    void addParserId(int parserId);
-
-    /// @returns true if the parserID is already in the list of visited IDs.
-    [[nodiscard]] bool hasVisitedParserId(int parserId) const;
-
     /// @returns a symbolic expression using the id and label provided.
     /// Also handles complex expressions such as structs or headers.
     const IR::Expression *createSymbolicExpression(const IR::Type *inputType, cstring label) const;
@@ -60,8 +49,13 @@ class ExecutionState : public AbstractExecutionState {
     /// @returns the execution condition associated with this state.
     [[nodiscard]] const IR::Expression *getExecutionCondition() const;
 
-    /// Merge another execution state into this state.
-    void merge(const ExecutionState &mergeState);
+    /// Merge another execution state under its path condition, or under an explicit condition
+    /// when the caller has established that it covers the incoming state's domain.
+    void merge(const ExecutionState &mergeState, const IR::Expression *condition = nullptr);
+
+    /// Join mutually exclusive incoming paths at a common program point. Unlike merge(),
+    /// this also widens the execution condition to cover both incoming paths.
+    void join(const ExecutionState &other);
 
     /// @returns the node annotation map associated with this state.
     [[nodiscard]] const NodeAnnotationMap &nodeAnnotationMap() const;

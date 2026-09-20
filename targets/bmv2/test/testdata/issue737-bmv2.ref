@@ -1,5 +1,5 @@
-Eliminated node at line 38: hdr.h.field = 64w5;
-Eliminated node at line 41: hdr.h.field = 64w4;
+Eliminated node at line 44: hdr.h.field = 64w5;
+Eliminated node at line 47: hdr.h.field = 64w4;
 statement_count_before:4
 statement_count_after:2
 cyclomatic_complexity:3

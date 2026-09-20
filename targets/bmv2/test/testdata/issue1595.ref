@@ -1,7 +1,7 @@
-Eliminated node at line 75: a1: { }
-Eliminated node at line 76: a2: { hdr.ethernet.srcAddr[39:32] = 2; }
-Eliminated node at line 77: a3: { hdr.ethernet.srcAddr[39:32] = 3; }
-Eliminated node at line 78: a4: { hdr.ethernet.srcAddr[39:32] = 4; }
+Eliminated node at line 66: a1: { }
+Eliminated node at line 67: a2: { hdr.ethernet.srcAddr[39:32] = 2; }
+Eliminated node at line 68: a3: { hdr.ethernet.srcAddr[39:32] = 3; }
+Eliminated node at line 69: a4: { hdr.ethernet.srcAddr[39:32] = 4; }
 statement_count_before:10
 statement_count_after:7
 cyclomatic_complexity:24

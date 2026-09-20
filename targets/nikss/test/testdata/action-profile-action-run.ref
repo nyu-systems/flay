@@ -1,5 +1,5 @@
-Eliminated node at line 57: a1: { send_to_port(ostd, (PortId_t) 1); }
-Eliminated node at line 58: a2: { send_to_port(ostd, (PortId_t) 2); }
+Eliminated node at line 47: a1: { send_to_port(ostd, (PortId_t) 1); }
+Eliminated node at line 48: a2: { send_to_port(ostd, (PortId_t) 2); }
 statement_count_before:16
 statement_count_after:14
 cyclomatic_complexity:9

@@ -1,6 +1,6 @@
-Eliminated node at line 160: t0.apply();
-Eliminated node at line 161: t1.apply();
-Eliminated node at line 176: t2.apply();
+Eliminated node at line 166: t0.apply();
+Eliminated node at line 167: t1.apply();
+Eliminated node at line 182: t2.apply();
 statement_count_before:19
 statement_count_after:16
 cyclomatic_complexity:13

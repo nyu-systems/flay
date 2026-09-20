@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 
+#include "backends/p4tools/common/compiler/convert_hs_index.h"
 #include "backends/p4tools/common/lib/gen_eq.h"
 #include "backends/p4tools/common/lib/symbolic_env.h"
 #include "backends/p4tools/common/lib/variables.h"
@@ -253,7 +254,7 @@ bool ExpressionResolver::preorder(const IR::Mux *mux) {
     return false;
 }
 
-bool ExpressionResolver::preorder(const IR::ListExpression *listExpr) {
+bool ExpressionResolver::preorder(const IR::BaseListExpression *listExpr) {
     IR::Vector<IR::Expression> components;
     bool hasChanged = false;
     for (const auto *expr : listExpr->components) {
@@ -380,6 +381,39 @@ bool ExpressionResolver::preorder(const IR::MethodCallExpression *call) {
                     return false;
                 }
                 P4C_UNIMPLEMENTED("Unknown method call on header instance: %1%", call);
+            }
+
+            if (const auto *stackType = method->expr->type->to<IR::Type_Array>()) {
+                const bool isPush = method->member == IR::Type_Array::push_front;
+                if (!isPush && method->member != IR::Type_Array::pop_front) {
+                    P4C_UNIMPLEMENTED("Unknown method call on stack instance: %1%", call);
+                }
+                BUG_CHECK(resolvedArgs.size() == 1, "Expected one argument for %1%", call);
+                const auto *count = resolvedArgs.at(0)->expression->checkedTo<IR::Constant>();
+                BUG_CHECK(count->value >= 0, "Negative header stack shift: %1%", call);
+                const auto size = stackType->getSize();
+                // Clamp before converting: P4 counts can be larger than machine integers.
+                const auto shift = count->value >= size ? size : count->asUnsigned();
+                if (shift == 0) return false;
+                const auto *elementType = state.resolveType(stackType->elementType);
+                auto element = [&](size_t index) {
+                    return HSIndexToMember::produceStackIndex(elementType, method->expr, index);
+                };
+                // Copy backwards for push and forwards for pop to preserve unread elements.
+                // setStructLike copies symbolic field values and header validity together.
+                for (size_t offset = 0; offset < size; ++offset) {
+                    const auto index = isPush ? size - 1 - offset : offset;
+                    const auto *destination = element(index);
+                    if (isPush ? index >= shift : index < size - shift) {
+                        const auto source = isPush ? index - shift : index + shift;
+                        state.setStructLike(destination, element(source));
+                    } else {
+                        state.initializeStructLike(FlayTarget::get(), destination, false);
+                    }
+                }
+                // p4c forbids push/pop in parsers; next/last/lastIndex are parser-only.
+                // No observable parser cursor remains to update here.
+                return false;
             }
 
             P4C_UNIMPLEMENTED("Unknown method member expression: %1% of type %2%", method->expr,

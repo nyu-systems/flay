@@ -1,7 +1,7 @@
-Eliminated node at line 148: ipv4_lpm.apply();
-Eliminated node at line 149: forward.apply();
-Eliminated node at line 182: send_frame.apply();
-Replaced node at line 171: standard_metadata.egress_port: exact; with 0
+Eliminated node at line 154: ipv4_lpm.apply();
+Eliminated node at line 155: forward.apply();
+Eliminated node at line 188: send_frame.apply();
+Replaced node at line 177: standard_metadata.egress_port: exact; with 0
 statement_count_before:18
 statement_count_after:15
 cyclomatic_complexity:10

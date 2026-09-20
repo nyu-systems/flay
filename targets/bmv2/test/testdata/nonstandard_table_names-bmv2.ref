@@ -1,8 +1,8 @@
-Eliminated node at line 84: simple_table_1.apply();
-Eliminated node at line 85: simple_table_2.apply();
-Eliminated node at line 86: simple_table_3.apply();
-Eliminated node at line 87: simple_table_4.apply();
-Eliminated node at line 88: simple_table_5.apply();
+Eliminated node at line 90: simple_table_1.apply();
+Eliminated node at line 91: simple_table_2.apply();
+Eliminated node at line 92: simple_table_3.apply();
+Eliminated node at line 93: simple_table_4.apply();
+Eliminated node at line 94: simple_table_5.apply();
 statement_count_before:12
 statement_count_after:7
 cyclomatic_complexity:5

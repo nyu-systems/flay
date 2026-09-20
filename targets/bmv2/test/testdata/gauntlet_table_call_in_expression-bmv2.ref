@@ -1,6 +1,6 @@
-Eliminated node at line 48: if(simple_table.apply().hit && h.eth_hdr.src_addr == h.eth_hdr.dst_addr) {
-Eliminated node at line 48: if(simple_table.apply().hit && h.eth_hdr.src_addr == h.eth_hdr.dst_addr) {
-Eliminated node at line 48: if(simple_table.apply().hit && h.eth_hdr.src_addr == h.eth_hdr.dst_addr) {
+Eliminated node at line 54: if(simple_table.apply().hit && h.eth_hdr.src_addr == h.eth_hdr.dst_addr) {
+Eliminated node at line 54: if(simple_table.apply().hit && h.eth_hdr.src_addr == h.eth_hdr.dst_addr) {
+Eliminated node at line 54: if(simple_table.apply().hit && h.eth_hdr.src_addr == h.eth_hdr.dst_addr) {
 statement_count_before:9
 statement_count_after:5
 cyclomatic_complexity:5

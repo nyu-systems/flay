@@ -1,5 +1,5 @@
-Eliminated node at line 80: hdr.ethernet.dstAddr = 0x000000000010;
-Eliminated node at line 81: } else if (istd.class_of_service == (ClassOfService_t) 10) {
+Eliminated node at line 70: hdr.ethernet.dstAddr = 0x000000000010;
+Eliminated node at line 71: } else if (istd.class_of_service == (ClassOfService_t) 10) {
 statement_count_before:14
 statement_count_after:12
 cyclomatic_complexity:4

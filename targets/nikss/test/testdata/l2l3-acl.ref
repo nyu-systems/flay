@@ -1,13 +1,13 @@
-Eliminated node at line 306: tbl_ingress_vlan.apply();
-Replaced node at line 307: tbl_mac_learning.apply(); with mac_learn();
-Eliminated node at line 308: if (tbl_routable.apply().hit) {
-Eliminated node at line 308: if (tbl_routable.apply().hit) {
-Eliminated node at line 318: tbl_switching.apply();
-Eliminated node at line 319: tbl_acl.apply();
+Eliminated node at line 296: tbl_ingress_vlan.apply();
+Replaced node at line 297: tbl_mac_learning.apply(); with mac_learn();
+Eliminated node at line 298: if (tbl_routable.apply().hit) {
+Eliminated node at line 298: if (tbl_routable.apply().hit) {
+Eliminated node at line 308: tbl_switching.apply();
+Eliminated node at line 309: tbl_acl.apply();
 Eliminated node at line (unknown): 
-Eliminated node at line 358: if (istd.packet_path == PSA_PacketPath_t.NORMAL_MULTICAST && istd.egress_port == (PortId_t) headers.bridged_meta.ingress_port) {
+Eliminated node at line 348: if (istd.packet_path == PSA_PacketPath_t.NORMAL_MULTICAST && istd.egress_port == (PortId_t) headers.bridged_meta.ingress_port) {
 Eliminated node at line (unknown): 
-Eliminated node at line 362: tbl_vlan_egress.apply();
+Eliminated node at line 352: tbl_vlan_egress.apply();
 statement_count_before:73
 statement_count_after:65
 cyclomatic_complexity:23

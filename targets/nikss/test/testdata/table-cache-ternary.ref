@@ -1,5 +1,5 @@
-Eliminated node at line 73: if (tbl_ternary.apply().hit) {
-Eliminated node at line 73: if (tbl_ternary.apply().hit) {
+Eliminated node at line 64: if (tbl_ternary.apply().hit) {
+Eliminated node at line 64: if (tbl_ternary.apply().hit) {
 statement_count_before:12
 statement_count_after:11
 cyclomatic_complexity:2

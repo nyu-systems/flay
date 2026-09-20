@@ -1,0 +1,8 @@
+Eliminated node at line 39: foo_table.apply();
+statement_count_before:2
+statement_count_after:1
+cyclomatic_complexity:1
+num_parsers_paths:1
+num_updates_processed:0
+num_respecializations:0
+

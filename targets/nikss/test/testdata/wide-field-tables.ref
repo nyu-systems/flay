@@ -1,9 +1,9 @@
-Replaced node at line 167: tbl_default.apply(); with set_dst(340277520782485789054823377486907615914);
-Eliminated node at line 169: tbl_exact.apply();
-Eliminated node at line 170: tbl_lpm.apply();
-Eliminated node at line 171: tbl_ternary.apply();
-Eliminated node at line 177: tbl_exact_ap.apply();
-Eliminated node at line 178: tbl_exact_as.apply();
+Replaced node at line 158: tbl_default.apply(); with set_dst(340277520782485789054823377486907615914);
+Eliminated node at line 160: tbl_exact.apply();
+Eliminated node at line 161: tbl_lpm.apply();
+Eliminated node at line 162: tbl_ternary.apply();
+Eliminated node at line 168: tbl_exact_ap.apply();
+Eliminated node at line 169: tbl_exact_as.apply();
 statement_count_before:41
 statement_count_after:36
 cyclomatic_complexity:27

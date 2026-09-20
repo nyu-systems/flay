@@ -17,3 +17,9 @@ set(FLAY_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/table_executor.cpp
     PARENT_SCOPE
 )
+
+set(FLAY_GTEST_SOURCES
+    ${FLAY_GTEST_SOURCES}
+    ${CMAKE_CURRENT_SOURCE_DIR}/test/target_test.cpp
+    PARENT_SCOPE
+)

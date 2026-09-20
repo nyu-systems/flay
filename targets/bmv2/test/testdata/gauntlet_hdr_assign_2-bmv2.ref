@@ -1,5 +1,5 @@
-Eliminated node at line 41: h.h.setValid();
-Replaced node at line 40: if (sm.egress_port == 2) { with 0
+Eliminated node at line 47: h.h.setValid();
+Replaced node at line 46: if (sm.egress_port == 2) { with 0
 statement_count_before:8
 statement_count_after:7
 cyclomatic_complexity:1

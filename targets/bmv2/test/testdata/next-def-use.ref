@@ -1,4 +1,4 @@
-Eliminated node at line 35: } else if (hdr.hs[0].isValid()) {
+Eliminated node at line 41: } else if (hdr.hs[0].isValid()) {
 statement_count_before:6
 statement_count_after:5
 cyclomatic_complexity:2

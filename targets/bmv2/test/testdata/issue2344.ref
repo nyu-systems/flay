@@ -1,8 +1,8 @@
-Eliminated node at line 19: if (tmp1.a != 10) {
-Eliminated node at line 38: simple_table.apply();
-Eliminated node at line 39: simple_table.apply();
-Replaced node at line 19: if (tmp1.a != 10) { with 0
-Replaced node at line 31: h.h.b : exact @name("key") ; with 0
+Eliminated node at line 25: if (tmp1.a != 10) {
+Eliminated node at line 44: simple_table.apply();
+Eliminated node at line 45: simple_table.apply();
+Replaced node at line 25: if (tmp1.a != 10) { with 0
+Replaced node at line 37: h.h.b : exact @name("key") ; with 0
 statement_count_before:5
 statement_count_after:2
 cyclomatic_complexity:17

@@ -430,7 +430,7 @@ class ActionProfile : public Z3ControlPlaneItem {
     std::set<cstring> _associatedTables;
 
  public:
-    explicit ActionProfile(cstring name) : _name(name){};
+    explicit ActionProfile(cstring name) : _name(name) {};
     explicit ActionProfile(cstring name, std::set<cstring> associatedTables)
         : _name(name), _associatedTables(std::move(associatedTables)) {}
 
@@ -466,7 +466,7 @@ class ActionSelector : public Z3ControlPlaneItem {
     std::set<cstring> _associatedTables;
 
  public:
-    explicit ActionSelector(ActionProfile &actionProfile) : _actionProfile(actionProfile){};
+    explicit ActionSelector(ActionProfile &actionProfile) : _actionProfile(actionProfile) {};
     explicit ActionSelector(ActionProfile &actionProfile, std::set<cstring> associatedTables)
         : _actionProfile(actionProfile), _associatedTables(std::move(associatedTables)) {}
 

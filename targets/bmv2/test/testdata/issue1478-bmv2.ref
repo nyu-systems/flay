@@ -1,4 +1,4 @@
-Eliminated node at line 37: apply { t1.apply(); t2.apply(); }
+Eliminated node at line 43: apply { t1.apply(); t2.apply(); }
 statement_count_before:2
 statement_count_after:1
 cyclomatic_complexity:1

@@ -1,6 +1,8 @@
 #include "backends/p4tools/modules/flay/core/interpreter/parser_stepper.h"
 
 #include <optional>
+#include <ranges>
+#include <set>
 
 #include "backends/p4tools/common/lib/arch_spec.h"
 #include "backends/p4tools/common/lib/gen_eq.h"
@@ -76,10 +78,7 @@ bool ParserStepper::preorder(const IR::P4Parser *parser) {
         }
     }
 
-    // Step into the start state.
-    const auto *startState = parser->states.getDeclaration<IR::ParserState>(cstring("start"));
-    executionState.addParserId(startState->clone_id);
-    startState->apply_visitor_preorder(*this);
+    processParserStates(parser);
 
     // Copy-out.
     for (size_t paramIdx = 0; paramIdx < parserParams->size(); ++paramIdx) {
@@ -91,30 +90,81 @@ bool ParserStepper::preorder(const IR::P4Parser *parser) {
     return false;
 }
 
+void ParserStepper::processParserStates(const IR::P4Parser *parser) {
+    auto &executionState = getExecutionState();
+    // Reverse postorder is a topological order for the acyclic parser produced by unrolling.
+    // Reject remaining cycles explicitly: joining a loop would require a fixed-point analysis.
+    std::vector<const IR::ParserState *> order;
+    std::set<const IR::ParserState *> active, visited;
+    std::function<void(const IR::ParserState *)> visit = [&](const IR::ParserState *state) {
+        if (active.contains(state)) {
+            P4C_UNIMPLEMENTED(
+                "Parser state %1% was already visited. We currently do not support "
+                "parser loops.",
+                state->name);
+        }
+        if (!visited.insert(state).second) return;
+        active.insert(state);
+        auto visitDestination = [&](const IR::PathExpression *path) {
+            visit(executionState.findDecl(path)->checkedTo<IR::ParserState>());
+        };
+        if (state->name != IR::ParserState::accept && state->name != IR::ParserState::reject) {
+            if (const auto *select = state->selectExpression->to<IR::SelectExpression>()) {
+                bool hasDefault = false;
+                for (const auto *selectCase : select->selectCases) {
+                    visitDestination(selectCase->state);
+                    if (selectCase->keyset->is<IR::DefaultExpression>()) {
+                        hasDefault = true;
+                        break;
+                    }
+                }
+                if (!hasDefault) visitDestination(new IR::PathExpression(IR::ParserState::reject));
+            } else {
+                visitDestination(state->selectExpression->checkedTo<IR::PathExpression>());
+            }
+        }
+        active.erase(state);
+        order.push_back(state);
+    };
+    const auto *startState = parser->states.getDeclaration<IR::ParserState>("start"_cs);
+    visit(startState);
+    incomingStates.clear();
+    parserExitStates.clear();
+    enqueue(startState, executionState.clone());
+    auto &caller = stepper.get();
+    for (const auto *state : std::views::reverse(order)) {
+        auto incoming = incomingStates.extract(state);
+        BUG_CHECK(!incoming.empty(), "No incoming execution state for %1%", state);
+        stepper = FlayTarget::getStepper(caller.getProgramInfo(), caller.controlPlaneConstraints(),
+                                         *incoming.mapped());
+        state->apply_visitor_preorder(*this);
+    }
+    stepper = caller;
+    // Accept and reject, including implicit rejection, partition all paths through the parser.
+    // Their union is the entry condition. Avoid carrying the expanded disjunction of every
+    // parser path into all subsequent control expressions.
+    BUG_CHECK(!parserExitStates.empty(), "Parser %1% has no exit", parser);
+    auto &completed = parserExitStates.front().get().clone();
+    for (size_t idx = 1; idx < parserExitStates.size(); ++idx) {
+        completed.join(parserExitStates[idx]);
+    }
+    executionState.merge(completed, executionState.getExecutionCondition());
+}
+
 void ParserStepper::processSelectExpression(const IR::SelectExpression *selectExpr) {
     auto &executionState = getExecutionState();
     auto &resolver = stepper.get().createExpressionResolver();
     const auto *selectKeyExpr = resolver.computeResult(selectExpr->select);
 
-    const IR::Expression *notCond = nullptr;
-    std::vector<std::reference_wrapper<const ExecutionState>> accumulatedStates;
+    const IR::Expression *notCond = IR::BoolLiteral::get(true);
     for (const auto *selectCase : selectExpr->selectCases) {
-        // The default label must be last. Execute its label.
-        if (selectCase->keyset->is<IR::DefaultExpression>()) {
-            const auto *decl =
-                executionState.findDecl(selectCase->state)->checkedTo<IR::ParserState>();
-            decl->apply_visitor_preorder(*this);
-            break;
-        }
-
-        // Actually execute the select expression.
         const auto *decl = executionState.findDecl(selectCase->state)->checkedTo<IR::ParserState>();
-        int declId = decl->clone_id;
-        if (executionState.hasVisitedParserId(declId)) {
-            P4C_UNIMPLEMENTED(
-                "Parser state %1% was already visited. We currently do not support parser loops.",
-                selectCase->state);
-            continue;
+        if (selectCase->keyset->is<IR::DefaultExpression>()) {
+            auto &selectState = executionState.clone();
+            selectState.pushExecutionCondition(notCond);
+            selectState.popNamespace();
+            enqueue(decl, selectState);
+            return;
         }
         const IR::Expression *selectCaseMatchExpr = nullptr;
 
@@ -144,33 +194,29 @@ void ParserStepper::processSelectExpression(const IR::SelectExpression *selectEx
                                                     parserValueSetName.value()));
         }
         auto &selectState = executionState.clone();
-        selectState.addParserId(declId);
-        if (notCond == nullptr) {
-            selectState.pushExecutionCondition(matchCond);
-            notCond = new IR::LNot(matchCond);
-        } else {
-            selectState.pushExecutionCondition(new IR::LAnd(notCond, matchCond));
-            notCond = new IR::LAnd(notCond, new IR::LNot(matchCond));
-        }
-        auto subParserStepper = ParserStepper(FlayTarget::getStepper(
-            getProgramInfo(), stepper.get().controlPlaneConstraints(), selectState));
-        decl->apply(subParserStepper);
-        // Save the state for later merging.
-        accumulatedStates.emplace_back(selectState);
+        selectState.pushExecutionCondition(new IR::LAnd(notCond, matchCond));
+        notCond = new IR::LAnd(notCond, new IR::LNot(matchCond));
+        selectState.popNamespace();
+        enqueue(decl, selectState);
     }
+    // A select without a matching case implicitly rejects.
+    auto &rejectState = executionState.clone();
+    rejectState.pushExecutionCondition(notCond);
+    const auto *reject = executionState.findDecl(new IR::PathExpression(IR::ParserState::reject))
+                             ->checkedTo<IR::ParserState>();
+    rejectState.popNamespace();
+    enqueue(reject, rejectState);
+}
 
-    // After, merge all the accumulated state.
-    for (auto accumulatedState : accumulatedStates) {
-        executionState.merge(accumulatedState);
-    }
+void ParserStepper::enqueue(const IR::ParserState *destination, ExecutionState &state) {
+    auto [it, inserted] = incomingStates.emplace(destination, &state);
+    if (!inserted) it->second->join(state);
 }
 
 bool ParserStepper::preorder(const IR::ParserState *parserState) {
-    // Only bother looking up cases that are not accept or reject.
-    if (parserState->name == IR::ParserState::accept) {
-        return false;
-    }
-    if (parserState->name == IR::ParserState::reject) {
+    if (parserState->name == IR::ParserState::accept ||
+        parserState->name == IR::ParserState::reject) {
+        addParserExitState(getExecutionState());
         return false;
     }
 
@@ -185,19 +231,12 @@ bool ParserStepper::preorder(const IR::ParserState *parserState) {
 
     if (const auto *selectExpr = select->to<IR::SelectExpression>()) {
         processSelectExpression(selectExpr);
+        executionState.popNamespace();
     } else if (const auto *pathExpression = select->to<IR::PathExpression>()) {
         executionState.popNamespace();
-        // If we are referencing a parser state, step into the executionState.
+        // Forward the state in the parser namespace, after leaving the source state.
         const auto *decl = executionState.findDecl(pathExpression)->checkedTo<IR::ParserState>();
-        int declId = decl->clone_id;
-        if (executionState.hasVisitedParserId(declId)) {
-            P4C_UNIMPLEMENTED(
-                "Parser state %1% was already visited. We currently do not support parser loops.",
-                pathExpression);
-        } else {
-            executionState.addParserId(declId);
-            decl->apply_visitor_preorder(*this);
-        }
+        enqueue(decl, executionState);
     } else {
         P4C_UNIMPLEMENTED("Select expression %1% not implemented for parser states.", select);
     }

@@ -13,11 +13,11 @@ class Placeholder : Expression {
     Placeholder(cstring label, Expression defaultValue) : Expression(defaultValue->type), label(label), defaultValue(defaultValue) {}
 
     /// Implements comparisons so that Placeholders can be used as map keys.
-    isSemanticallyLess {
-        if (static_cast<const Node *>(this) == &a_) return false;
-        if (typeId() != a_.typeId()) return typeId() < a_.typeId();
-        auto &a = static_cast<const SymbolicVariable &>(a_);
-        return label < a.label;  /* ignore type and default value */
+    structuralCompare {
+        if (static_cast<const Node *>(this) == &a_) return std::weak_ordering::equivalent;
+        if (typeId() != a_.typeId()) return typeId() <=> a_.typeId();
+        auto &a = static_cast<const Placeholder &>(a_);
+        return IR::structuralCompare(label, a.label);  /* ignore type and default value */
     }
 
     toString { return "@" + label +"(" + type->toString() + ")@"; }

@@ -1,5 +1,5 @@
-Eliminated node at line 49: dummy: {
-Eliminated node at line 56: do_action();
+Eliminated node at line 55: dummy: {
+Eliminated node at line 62: do_action();
 statement_count_before:8
 statement_count_after:5
 cyclomatic_complexity:4

@@ -1,5 +1,5 @@
-Eliminated node at line 88: } else if (istd.packet_path == PSA_PacketPath_t.RECIRCULATE) {
-Eliminated node at line 102: if (istd.packet_path == PSA_PacketPath_t.RECIRCULATE) {
+Eliminated node at line 78: } else if (istd.packet_path == PSA_PacketPath_t.RECIRCULATE) {
+Eliminated node at line 92: if (istd.packet_path == PSA_PacketPath_t.RECIRCULATE) {
 statement_count_before:10
 statement_count_after:8
 cyclomatic_complexity:4

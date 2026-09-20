@@ -1,22 +1,22 @@
-Eliminated node at line 292: ingress_l4_src_port.apply();
-Eliminated node at line 293: ingress_l4_dst_port.apply();
-Eliminated node at line 484: source_interface_lookup_by_port.apply();
-Eliminated node at line 487: gtpu_decap();
-Eliminated node at line 486: if (session_lookup_by_teid.apply().hit) {
+Eliminated node at line 282: ingress_l4_src_port.apply();
+Eliminated node at line 283: ingress_l4_dst_port.apply();
+Eliminated node at line 474: source_interface_lookup_by_port.apply();
+Eliminated node at line 477: gtpu_decap();
+Eliminated node at line 476: if (session_lookup_by_teid.apply().hit) {
 Eliminated node at line (unknown): 
-Eliminated node at line 491: } else if (!session_lookup_by_ue_ip.apply().hit) {
-Eliminated node at line 494: if (pdr_lookup.apply().hit) {
-Eliminated node at line 494: if (pdr_lookup.apply().hit) {
-Replaced node at line 325: ipv4_lpm.apply(); with ip_forward_drop_0/drop();
-Replaced node at line 418: meta.upf.seid: exact; with 0
-Replaced node at line 422: meta.upf.src_port_range_id: ternary; with 0
-Replaced node at line 423: meta.upf.dst_port_range_id: ternary; with 0
-Replaced node at line 424: meta.upf.src : exact; with 0
-Replaced node at line 435: meta.upf.far_id: exact; with 0
-Replaced node at line 314: meta.upf.dest : exact; with 0
-Replaced node at line 315: meta.upf.outer_dst_addr: lpm; with 0
-Replaced node at line 499: if (meta.upf.dest == ACCESS || meta.upf.dest == CORE) { with 0
-Replaced node at line 499: if (meta.upf.dest == ACCESS || meta.upf.dest == CORE) { with 0
+Eliminated node at line 481: } else if (!session_lookup_by_ue_ip.apply().hit) {
+Eliminated node at line 484: if (pdr_lookup.apply().hit) {
+Eliminated node at line 484: if (pdr_lookup.apply().hit) {
+Replaced node at line 315: ipv4_lpm.apply(); with ip_forward_drop_0/drop();
+Replaced node at line 408: meta.upf.seid: exact; with 0
+Replaced node at line 412: meta.upf.src_port_range_id: ternary; with 0
+Replaced node at line 413: meta.upf.dst_port_range_id: ternary; with 0
+Replaced node at line 414: meta.upf.src : exact; with 0
+Replaced node at line 425: meta.upf.far_id: exact; with 0
+Replaced node at line 304: meta.upf.dest : exact; with 0
+Replaced node at line 305: meta.upf.outer_dst_addr: lpm; with 0
+Replaced node at line 489: if (meta.upf.dest == ACCESS || meta.upf.dest == CORE) { with 0
+Replaced node at line 489: if (meta.upf.dest == ACCESS || meta.upf.dest == CORE) { with 0
 statement_count_before:115
 statement_count_after:110
 cyclomatic_complexity:47

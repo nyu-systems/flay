@@ -1,5 +1,5 @@
-Eliminated node at line 68: tbl.apply();
-Eliminated node at line 69: tbl2.apply();
+Eliminated node at line 58: tbl.apply();
+Eliminated node at line 59: tbl2.apply();
 statement_count_before:14
 statement_count_after:12
 cyclomatic_complexity:2

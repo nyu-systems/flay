@@ -1,7 +1,7 @@
-Eliminated node at line 38: if (meta.field == 0) {
-Eliminated node at line 49: change_cond.apply();
-Replaced node at line 38: if (meta.field == 0) { with 0
-Replaced node at line 44: key = { ostd.egress_spec: exact; } with 0
+Eliminated node at line 44: if (meta.field == 0) {
+Eliminated node at line 55: change_cond.apply();
+Replaced node at line 44: if (meta.field == 0) { with 0
+Replaced node at line 50: key = { ostd.egress_spec: exact; } with 0
 statement_count_before:2
 statement_count_after:0
 cyclomatic_complexity:2

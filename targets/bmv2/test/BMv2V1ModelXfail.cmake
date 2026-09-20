@@ -5,9 +5,6 @@
 p4tools_add_xfail_reason(
   "flay-bmv2-v1model"
   "Compiler Bug|Unimplemented compiler support"
-  issue1304.p4 # Cast failed: Pipeline<my_packet, my_metadata> with type Type_Specialized is not a
-               # Type_Declaration.
-  header-stack-ops-bmv2.p4 # Unknown method member expression: hdr_0.h2; of type header h2_t
   issue4739.p4 # type ForStatement not implemented in the core stepper
   loop-3-clause-tricky2.p4 # type ForStatement not implemented in the core stepper
 )
@@ -37,12 +34,6 @@ p4tools_add_xfail_reason(
   "Unable to find var .* in the symbolic environment"
   union-valid-bmv2.p4 # Unable to find var h.u.*valid; in the symbolic environment.
   issue3091.p4 # WONTFIX Unable to find var ternary; in the symbolic environment.
-)
-
-p4tools_add_xfail_reason(
-  "flay-bmv2-v1model"
-  "expected a header or header union stack"
-  issue4057.p4
 )
 
 p4tools_add_xfail_reason(
@@ -106,4 +97,18 @@ p4tools_add_xfail_reason(
   hashing-non-tuple-bmv2.p4
   # Similarly, this test hashes on a bit input.
   issue584-1-bmv2.p4
+)
+
+# Unsupported architecture, now diagnosed before attempting to interpret its blocks.
+p4tools_add_xfail_reason(
+  "flay-bmv2-v1model"
+  "only supports a 'V1Switch' main package"
+  issue1304.p4
+)
+
+# Data-dependent control loops are not implemented by the interpreter.
+p4tools_add_xfail_reason(
+  "flay-bmv2-v1model"
+  "type ForStatement not implemented in the core stepper"
+  forloop-bmv2.p4
 )

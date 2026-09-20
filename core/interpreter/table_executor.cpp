@@ -5,9 +5,9 @@
 
 #include <boost/multiprecision/cpp_int.hpp>
 
-#include "backends/p4tools/common/control_plane/symbolic_variables.h"
 #include "backends/p4tools/common/lib/constants.h"
 #include "backends/p4tools/common/lib/symbolic_env.h"
+#include "backends/p4tools/common/lib/symbolic_variables.h"
 #include "backends/p4tools/common/lib/table_utils.h"
 #include "backends/p4tools/modules/flay/core/interpreter/expression_resolver.h"
 #include "backends/p4tools/modules/flay/core/interpreter/target.h"

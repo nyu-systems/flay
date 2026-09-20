@@ -1,5 +1,5 @@
-Eliminated node at line 40: BfyXpa.apply();
-Replaced node at line 39: val = tmp_1.a; with 3
+Eliminated node at line 46: BfyXpa.apply();
+Replaced node at line 45: val = tmp_1.a; with 3
 statement_count_before:5
 statement_count_after:4
 cyclomatic_complexity:1

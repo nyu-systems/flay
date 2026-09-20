@@ -43,6 +43,13 @@ void V1ModelFlayTarget::make() {
 
 const ProgramInfo *V1ModelFlayTarget::produceProgramInfoImpl(
     const CompilerResult &compilerResult, const IR::Declaration_Instance *mainDecl) const {
+    const auto *mainType = mainDecl->type->to<IR::Type_Specialized>();
+    if (mainType == nullptr || mainType->baseType->path->name != ARCH_SPEC.getPackageName()) {
+        error(ErrorType::ERR_INVALID,
+              "%1%: This Flay back end only supports a '%2%' main package. The current type is %3%",
+              mainDecl, ARCH_SPEC.getPackageName(), mainDecl->type);
+        return nullptr;
+    }
     // The blocks in the main declaration are just the arguments in the constructor call.
     // Convert mainDecl->arguments into a vector of blocks, represented as constructor-call
     // expressions.
@@ -50,9 +57,11 @@ const ProgramInfo *V1ModelFlayTarget::produceProgramInfoImpl(
         argumentsToTypeDeclarations(&compilerResult.getProgram(), mainDecl->arguments);
 
     // We should have six arguments.
-    BUG_CHECK(blocks.size() == 6, "%1%: The BMV2 architecture requires 6 pipes. Received %2%.",
-              mainDecl, blocks.size());
-
+    if (blocks.size() != 6) {
+        error("%1%: The BMV2 architecture requires 6 pipes. Received %2%.", mainDecl,
+              blocks.size());
+        return nullptr;
+    }
     ordered_map<cstring, const IR::Type_Declaration *> programmableBlocks;
     std::map<int, int> declIdToGress;
 

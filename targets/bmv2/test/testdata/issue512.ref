@@ -1,6 +1,6 @@
-Eliminated node at line 63: meta.b = meta.b ^ 5; // line (a)
-Replaced node at line 75: guh.apply(); with foo();
-Replaced node at line 57: if (meta.b > 10) { with 5
+Eliminated node at line 54: meta.b = meta.b ^ 5; // line (a)
+Replaced node at line 66: guh.apply(); with foo();
+Replaced node at line 48: if (meta.b > 10) { with 5
 statement_count_before:6
 statement_count_after:5
 cyclomatic_complexity:1

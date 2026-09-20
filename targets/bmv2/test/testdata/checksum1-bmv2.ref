@@ -1,4 +1,4 @@
-Replaced node at line 132: guh.apply(); with foo();
+Replaced node at line 138: guh.apply(); with foo();
 statement_count_before:15
 statement_count_after:15
 cyclomatic_complexity:7

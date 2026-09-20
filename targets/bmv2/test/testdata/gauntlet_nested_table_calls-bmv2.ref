@@ -1,5 +1,5 @@
-Eliminated node at line 44: h.eth_hdr.eth_type = simple_function((exit_table.apply().hit ? 16w1 : 16w2));
-Eliminated node at line 44: h.eth_hdr.eth_type = simple_function((exit_table.apply().hit ? 16w1 : 16w2));
+Eliminated node at line 50: h.eth_hdr.eth_type = simple_function((exit_table.apply().hit ? 16w1 : 16w2));
+Eliminated node at line 50: h.eth_hdr.eth_type = simple_function((exit_table.apply().hit ? 16w1 : 16w2));
 statement_count_before:8
 statement_count_after:5
 cyclomatic_complexity:3

@@ -1,5 +1,5 @@
-Eliminated node at line 128: 12w1: { stub.apply();}
-Eliminated node at line 129: 12w2: {
+Eliminated node at line 119: 12w1: { stub.apply();}
+Eliminated node at line 120: 12w2: {
 statement_count_before:32
 statement_count_after:10
 cyclomatic_complexity:81

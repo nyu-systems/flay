@@ -1,13 +1,13 @@
-Eliminated node at line 106: send_frame.apply();
-Eliminated node at line 191: flowlet.apply();
-Eliminated node at line 192: if (meta.ingress_metadata.flow_ipg > 32w50000)
-Eliminated node at line 195: ecmp_group.apply();
-Eliminated node at line 196: ecmp_nhop.apply();
-Eliminated node at line 197: forward.apply();
-Replaced node at line 100: standard_metadata.egress_port: exact; with 0
-Replaced node at line 158: meta.ingress_metadata.ecmp_offset: exact; with 0
-Replaced node at line 177: meta.ingress_metadata.nhop_ipv4: exact; with 0
-Replaced node at line 192: if (meta.ingress_metadata.flow_ipg > 32w50000) with 0
+Eliminated node at line 112: send_frame.apply();
+Eliminated node at line 197: flowlet.apply();
+Eliminated node at line 198: if (meta.ingress_metadata.flow_ipg > 32w50000)
+Eliminated node at line 201: ecmp_group.apply();
+Eliminated node at line 202: ecmp_nhop.apply();
+Eliminated node at line 203: forward.apply();
+Replaced node at line 106: standard_metadata.egress_port: exact; with 0
+Replaced node at line 164: meta.ingress_metadata.ecmp_offset: exact; with 0
+Replaced node at line 183: meta.ingress_metadata.nhop_ipv4: exact; with 0
+Replaced node at line 198: if (meta.ingress_metadata.flow_ipg > 32w50000) with 0
 statement_count_before:32
 statement_count_after:26
 cyclomatic_complexity:27

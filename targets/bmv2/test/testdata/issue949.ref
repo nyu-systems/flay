@@ -1,4 +1,4 @@
-Eliminated node at line 65: bool didHit = someTable.apply().hit;
+Eliminated node at line 71: bool didHit = someTable.apply().hit;
 statement_count_before:6
 statement_count_after:5
 cyclomatic_complexity:2

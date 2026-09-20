@@ -1,6 +1,6 @@
-Eliminated node at line 336: v6_addresses.apply();
-Eliminated node at line 337: v6_networks.apply();
-Eliminated node at line 340: v4_networks.apply();
+Eliminated node at line 342: v6_addresses.apply();
+Eliminated node at line 343: v6_networks.apply();
+Eliminated node at line 346: v4_networks.apply();
 statement_count_before:48
 statement_count_after:45
 cyclomatic_complexity:30

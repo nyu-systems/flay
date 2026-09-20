@@ -119,11 +119,11 @@ int Flay::mainImpl(const CompilerResult &compilerResult) {
     }
 
     if (flayOptions.p4InfoFilePath().has_value()) {
-        auto *outputFile = openFile(flayOptions.p4InfoFilePath().value(), true);
+        auto outputFile = openFile(flayOptions.p4InfoFilePath().value(), true);
         if (outputFile == nullptr) {
             return EXIT_FAILURE;
         }
-        flayCompilerResult.getP4RuntimeApi().serializeP4InfoTo(outputFile,
+        flayCompilerResult.getP4RuntimeApi().serializeP4InfoTo(outputFile.get(),
                                                                P4::P4RuntimeFormat::TEXT_PROTOBUF);
     }
 

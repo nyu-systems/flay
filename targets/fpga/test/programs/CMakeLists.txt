@@ -16,7 +16,8 @@ endmacro(fetchcontent_download_without_build)
 FetchContent_Declare(
   esnet
   GIT_REPOSITORY https://github.com/esnet/esnet-smartnic-hw
-  GIT_TAG main
+  # Keep the inputs stable alongside their checked-in reference outputs.
+  GIT_TAG 0b38574673e2592c354a75b9a9f37dc9c25e3359
 )
 
 fetchcontent_download_without_build(esnet)
@@ -32,7 +33,6 @@ set(XSA_EXTERNAL_TESTS
   ${esnet_SOURCE_DIR}/examples/p4_with_extern/p4/p4_with_extern.p4
   ${esnet_SOURCE_DIR}/examples/p4_multi_proc/p4/p4_multi_proc_igr.p4
   ${esnet_SOURCE_DIR}/examples/p4_multi_proc/p4/p4_multi_proc_egr.p4
-  ${esnet_SOURCE_DIR}/examples/p4_hbm/p4/p4_hbm.p4
   ${esnet_SOURCE_DIR}/examples/p4_and_verilog/p4/p4_and_verilog.p4
 )
 

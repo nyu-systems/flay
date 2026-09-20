@@ -1,4 +1,4 @@
-Eliminated node at line 60: tbl.apply();
+Eliminated node at line 50: tbl.apply();
 statement_count_before:8
 statement_count_after:7
 cyclomatic_complexity:1

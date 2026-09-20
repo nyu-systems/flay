@@ -1,4 +1,4 @@
-Eliminated node at line 30: if (local_metadata.test.test_error == error.Unused)
+Eliminated node at line 36: if (local_metadata.test.test_error == error.Unused)
 statement_count_before:1
 statement_count_after:0
 cyclomatic_complexity:1
