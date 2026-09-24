@@ -1,5 +1,5 @@
-Eliminated node at line 36: if (t.apply().miss) {
-Replaced node at line 31: key = { h.h.b : exact; } with 0
+Eliminated node at line 42: if (t.apply().miss) {
+Replaced node at line 37: key = { h.h.b : exact; } with 0
 statement_count_before:2
 statement_count_after:2
 cyclomatic_complexity:1

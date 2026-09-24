@@ -1,5 +1,5 @@
-Eliminated node at line 64: ostd.drop = true;
-Eliminated node at line 95: ostd.drop = true;
+Eliminated node at line 54: ostd.drop = true;
+Eliminated node at line 85: ostd.drop = true;
 statement_count_before:15
 statement_count_after:13
 cyclomatic_complexity:8

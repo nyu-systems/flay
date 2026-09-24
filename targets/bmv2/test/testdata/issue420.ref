@@ -1,5 +1,5 @@
-Eliminated node at line 41: hdr.ethernet.srcAddr = 48w0xdeadbeeff00d;
-Eliminated node at line 61: tbl1.apply();
+Eliminated node at line 47: hdr.ethernet.srcAddr = 48w0xdeadbeeff00d;
+Eliminated node at line 67: tbl1.apply();
 statement_count_before:5
 statement_count_after:3
 cyclomatic_complexity:2

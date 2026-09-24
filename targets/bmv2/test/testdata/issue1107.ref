@@ -1,5 +1,5 @@
-Replaced node at line 24: meta.f1 : exact; with 0
-Replaced node at line 25: meta.f2 : exact; with 0
+Replaced node at line 30: meta.f1 : exact; with 0
+Replaced node at line 31: meta.f2 : exact; with 0
 statement_count_before:2
 statement_count_after:2
 cyclomatic_complexity:7

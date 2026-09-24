@@ -13,14 +13,14 @@ namespace P4::P4Tools::Flay {
 /// The Z3 version of a ControlPlaneAssignmentSet. A little bit more restricted.
 class Z3ControlPlaneAssignmentSet
     : private ordered_map<std::reference_wrapper<const IR::SymbolicVariable>, z3::expr,
-                          IR::IsSemanticallyLessComparator> {
+                          IR::StructuralLess> {
  public:
     Z3ControlPlaneAssignmentSet() = default;
 
     /// Return the number of entries in the set.
     [[nodiscard]] size_t size() const {
         return ordered_map<std::reference_wrapper<const IR::SymbolicVariable>, z3::expr,
-                           IR::IsSemanticallyLessComparator>::size();
+                           IR::StructuralLess>::size();
     }
 
     /// Add a new variable to the set. If the variable is already in the set, returns false.
@@ -70,7 +70,7 @@ class Z3ControlPlaneAssignmentSet
     /// Clear the set.
     void clear() {
         ordered_map<std::reference_wrapper<const IR::SymbolicVariable>, z3::expr,
-                    IR::IsSemanticallyLessComparator>::clear();
+                    IR::StructuralLess>::clear();
     }
 
     /// Substitutes the given expression with the variables contained in the set.

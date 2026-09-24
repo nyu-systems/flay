@@ -23,7 +23,7 @@ namespace {
 /// "|X(bool)| ? |A(bit<8>)| : |B(bit<8>)|"
 class FoldMuxConditionDown : public Transform {
  private:
-    using ExpressionMap = std::map<const IR::Expression *, bool, IR::IsSemanticallyLessComparator>;
+    using ExpressionMap = std::map<const IR::Expression *, bool, IR::StructuralLess>;
 
     static std::optional<bool> optionalValue(const ExpressionMap &expressionMap,
                                              const IR::Expression *cond) {
@@ -116,7 +116,9 @@ class FoldMuxConditionDown : public Transform {
     }
 
  public:
-    FoldMuxConditionDown() { visitDagOnce = false; }
+    // Rewriting a mux depends only on its own condition, not on the path used to reach it.
+    // Keep the default DAG traversal so shared subexpressions are rewritten only once.
+    FoldMuxConditionDown() = default;
 };
 
 /// Lifts conditions in mux expressions "upward" and converts the conditions into disjunctive or

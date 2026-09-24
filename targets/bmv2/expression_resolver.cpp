@@ -6,7 +6,7 @@
 
 #include <boost/multiprecision/cpp_int.hpp>
 
-#include "backends/p4tools/common/control_plane/symbolic_variables.h"
+#include "backends/p4tools/common/lib/symbolic_variables.h"
 #include "backends/p4tools/common/lib/variables.h"
 #include "backends/p4tools/modules/flay/core/interpreter/externs.h"
 #include "backends/p4tools/modules/flay/targets/bmv2/constants.h"

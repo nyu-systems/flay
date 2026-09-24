@@ -30,7 +30,7 @@ using namespace ::P4::literals;
  * ============================================================================================= */
 
 FpgaBaseFlayTarget::FpgaBaseFlayTarget(const std::string &deviceName, const std::string &archName)
-    : FlayTarget(deviceName, archName){};
+    : FlayTarget(deviceName, archName) {};
 
 CompilerResultOrError FpgaBaseFlayTarget::runCompilerImpl(const CompilerOptions &options,
                                                           const IR::P4Program *program) const {

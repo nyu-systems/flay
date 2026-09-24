@@ -1,5 +1,5 @@
-Eliminated node at line 56: if (tbl.apply().hit)
-Eliminated node at line 56: if (tbl.apply().hit)
+Eliminated node at line 46: if (tbl.apply().hit)
+Eliminated node at line 46: if (tbl.apply().hit)
 statement_count_before:10
 statement_count_after:9
 cyclomatic_complexity:3

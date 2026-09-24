@@ -1,8 +1,8 @@
-Replaced node at line 133: ipv4_da_lpm.apply(); with my_drop();
-Replaced node at line 134: mac_da.apply(); with my_drop_2/my_drop();
-Replaced node at line 162: send_frame.apply(); with my_drop_3/my_drop();
-Replaced node at line 121: meta.fwd_metadata.l2ptr: exact; with 0
-Replaced node at line 152: meta.fwd_metadata.out_bd: exact; with 0
+Replaced node at line 125: ipv4_da_lpm.apply(); with my_drop();
+Replaced node at line 126: mac_da.apply(); with my_drop_2/my_drop();
+Replaced node at line 154: send_frame.apply(); with my_drop_3/my_drop();
+Replaced node at line 113: meta.fwd_metadata.l2ptr: exact; with 0
+Replaced node at line 144: meta.fwd_metadata.out_bd: exact; with 0
 statement_count_before:19
 statement_count_after:19
 cyclomatic_complexity:11

@@ -1,5 +1,5 @@
-Eliminated node at line 69: acl_table.apply();
-Replaced node at line 65: hdr.ethernet.etherType: exact; with 0
+Eliminated node at line 75: acl_table.apply();
+Replaced node at line 71: hdr.ethernet.etherType: exact; with 0
 statement_count_before:5
 statement_count_after:1
 cyclomatic_complexity:4

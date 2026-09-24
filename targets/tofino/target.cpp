@@ -33,7 +33,7 @@ using namespace P4::literals;
 
 TofinoBaseFlayTarget::TofinoBaseFlayTarget(const std::string &deviceName,
                                            const std::string &archName)
-    : FlayTarget(deviceName, archName){};
+    : FlayTarget(deviceName, archName) {};
 
 CompilerResultOrError TofinoBaseFlayTarget::runCompilerImpl(const CompilerOptions &options,
                                                             const IR::P4Program *program) const {

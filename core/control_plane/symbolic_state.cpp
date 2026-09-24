@@ -3,8 +3,8 @@
 #include <cstdint>
 #include <optional>
 
-#include "backends/p4tools/common/control_plane/symbolic_variables.h"
 #include "backends/p4tools/common/lib/constants.h"
+#include "backends/p4tools/common/lib/symbolic_variables.h"
 #include "backends/p4tools/common/lib/table_utils.h"
 #include "backends/p4tools/modules/flay/core/control_plane/control_plane_objects.h"
 #include "backends/p4tools/modules/flay/core/lib/return_macros.h"

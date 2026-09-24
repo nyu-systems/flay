@@ -1,4 +1,4 @@
-Eliminated node at line 58: if (meta.foo == PSA_CPU_PORT) {
+Eliminated node at line 49: if (meta.foo == PSA_CPU_PORT) {
 statement_count_before:2
 statement_count_after:1
 cyclomatic_complexity:2

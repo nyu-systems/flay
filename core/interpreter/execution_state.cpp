@@ -43,13 +43,21 @@ const IR::Expression *ExecutionState::createSymbolicExpression(const IR::Type *i
         // TODO: We keep the struct type anonymous because we do not know it.
         return new IR::StructExpression(structType, nullptr, fields);
     }
-    if (const auto *stackType = resolvedType->to<IR::Type_Stack>()) {
+    if (const auto *arrayType = resolvedType->to<IR::Type_Array>()) {
         IR::Vector<IR::Expression> fields;
-        for (size_t idx = 0; idx < stackType->getSize(); ++idx) {
+        for (size_t idx = 0; idx < arrayType->getSize(); ++idx) {
             auto fieldLabel = label + "[" + std::to_string(idx) + "]";
-            fields.push_back(createSymbolicExpression(stackType->elementType, fieldLabel));
+            fields.push_back(createSymbolicExpression(arrayType->elementType, fieldLabel));
         }
-        return new IR::HeaderStackExpression(fields, inputType);
+        return new IR::ArrayExpression(resolvedType, fields, resolvedType);
+    }
+    if (const auto *tupleType = resolvedType->to<IR::Type_BaseList>()) {
+        IR::Vector<IR::Expression> fields;
+        for (size_t idx = 0; idx < tupleType->components.size(); ++idx) {
+            auto fieldLabel = label + "[" + std::to_string(idx) + "]";
+            fields.push_back(createSymbolicExpression(tupleType->components.at(idx), fieldLabel));
+        }
+        return new IR::ListExpression(resolvedType, fields);
     }
     if (resolvedType->is<IR::Type_Base>()) {
         return new IR::DataPlaneVariable(resolvedType, label);
@@ -61,7 +69,8 @@ const IR::Expression *ExecutionState::createSymbolicExpression(const IR::Type *i
 const IR::Expression *ExecutionState::get(const IR::StateVariable &var) const {
     const auto *varType = resolveType(var->type);
     // In some cases, we may reference a complex expression. Convert it to a struct expression.
-    if (varType->is<IR::Type_StructLike>() || varType->is<IR::Type_Stack>()) {
+    if (varType->is<IR::Type_StructLike>() || varType->is<IR::Type_Array>() ||
+        varType->is<IR::Type_BaseList>()) {
         return convertToComplexExpression(var);
     }
     return env.get(var);
@@ -69,12 +78,6 @@ const IR::Expression *ExecutionState::get(const IR::StateVariable &var) const {
 
 void ExecutionState::set(const IR::StateVariable &var, const IR::Expression *value) {
     env.set(var, value);
-}
-
-void ExecutionState::addParserId(int parserId) { visitedParserIds.emplace(parserId); }
-
-bool ExecutionState::hasVisitedParserId(int parserId) const {
-    return visitedParserIds.find(parserId) != visitedParserIds.end();
 }
 
 /* =============================================================================================
@@ -93,8 +96,8 @@ void ExecutionState::pushExecutionCondition(const IR::Expression *cond) {
     }
 }
 
-void ExecutionState::merge(const ExecutionState &mergeState) {
-    const auto *cond = mergeState.getExecutionCondition();
+void ExecutionState::merge(const ExecutionState &mergeState, const IR::Expression *condition) {
+    const auto *cond = condition != nullptr ? condition : mergeState.getExecutionCondition();
     cond = SimplifyExpression::simplify(cond);
     const auto &mergeEnv = mergeState.getSymbolicEnv();
     _nodeAnnotationMap.mergeAnnotationMapping(mergeState.nodeAnnotationMap());
@@ -124,6 +127,12 @@ void ExecutionState::merge(const ExecutionState &mergeState) {
             }
         }
     }
+}
+
+void ExecutionState::join(const ExecutionState &other) {
+    const auto *condition = new IR::LOr(getExecutionCondition(), other.getExecutionCondition());
+    merge(other);
+    executionCondition = SimplifyExpression::simplify(condition);
 }
 
 const NodeAnnotationMap &ExecutionState::nodeAnnotationMap() const { return _nodeAnnotationMap; }

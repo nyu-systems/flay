@@ -2,7 +2,7 @@
 #define BACKENDS_P4TOOLS_MODULES_FLAY_CORE_INTERPRETER_PARSER_STEPPER_H_
 
 #include <functional>
-#include <set>
+#include <map>
 #include <vector>
 
 #include "backends/p4tools/modules/flay/core/interpreter/execution_state.h"
@@ -27,14 +27,19 @@ class ParserStepper : public Inspector {
     /// The list of parser exit states associated with this parser.
     std::vector<ParserExitState> parserExitStates;
 
-    /// Keep track of the parserStates we have visited to avoid infinite loops.
-    std::set<int> visitedParserIds;
+    /// Incoming symbolic states, joined before their destination is interpreted.
+    std::map<const IR::ParserState *, ExecutionState *> incomingStates;
+
+    /// Schedule an incoming state in the parser namespace (outside any state namespace).
+    void enqueue(const IR::ParserState *destination, ExecutionState &state);
 
     /// Add an exit state to the parser.
     void addParserExitState(const ExecutionState &state);
 
-    /// Compute the match for each parser select state and visit them.
-    /// Merge all states under the appropriate condition.
+    /// Interpret each reachable parser state once, after joining all incoming paths.
+    void processParserStates(const IR::P4Parser *parser);
+
+    /// Schedule select destinations under mutually exclusive first-match conditions.
     void processSelectExpression(const IR::SelectExpression *selectExpr);
 
     /// Visitor methods.

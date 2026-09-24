@@ -1,4 +1,4 @@
-Replaced node at line 57: apply { t.apply(); } with case0();
+Replaced node at line 48: apply { t.apply(); } with case0();
 statement_count_before:11
 statement_count_after:11
 cyclomatic_complexity:7

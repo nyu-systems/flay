@@ -18,10 +18,9 @@ struct SourceIdCmp {
 };
 
 /// Data structures which simplify the handling of symbolic variables.
-using SymbolSet =
-    std::set<std::reference_wrapper<const IR::SymbolicVariable>, IR::IsSemanticallyLessComparator>;
+using SymbolSet = std::set<std::reference_wrapper<const IR::SymbolicVariable>, IR::StructuralLess>;
 using SymbolMap = std::map<std::reference_wrapper<const IR::SymbolicVariable>,
-                           std::set<const IR::Node *>, IR::IsSemanticallyLessComparator>;
+                           std::set<const IR::Node *>, IR::StructuralLess>;
 using NodeSet = std::set<const IR::Node *, SourceIdCmp>;
 using ExpressionSet = std::set<const IR::Expression *, SourceIdCmp>;
 

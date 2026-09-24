@@ -1,7 +1,7 @@
-Eliminated node at line 46: t1.apply();
-Eliminated node at line 44: t1.apply();
-Eliminated node at line 48: t2.apply();
-Replaced node at line 43: if (m.b == 0) { with 0
+Eliminated node at line 37: t1.apply();
+Eliminated node at line 35: t1.apply();
+Eliminated node at line 39: t2.apply();
+Replaced node at line 34: if (m.b == 0) { with 0
 statement_count_before:3
 statement_count_after:0
 cyclomatic_complexity:4

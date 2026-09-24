@@ -1,7 +1,7 @@
-Eliminated node at line 73: t.apply();
-Replaced node at line 64: m.x.add2: exact; with 0
-Replaced node at line 65: m.z: exact; with 0
-Replaced node at line 66: z: exact; with 5
+Eliminated node at line 64: t.apply();
+Replaced node at line 55: m.x.add2: exact; with 0
+Replaced node at line 56: m.z: exact; with 0
+Replaced node at line 57: z: exact; with 5
 statement_count_before:3
 statement_count_after:2
 cyclomatic_complexity:0

@@ -1,0 +1,8 @@
+Eliminated node at line 64: t1.apply();
+statement_count_before:3
+statement_count_after:2
+cyclomatic_complexity:2
+num_parsers_paths:1
+num_updates_processed:0
+num_respecializations:0
+

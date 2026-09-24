@@ -1,7 +1,7 @@
-Eliminated node at line 102: test1.apply();
-Eliminated node at line 104: act1: { tbl1.apply(); }
-Eliminated node at line 105: act2: { tbl2.apply(); }
-Eliminated node at line 106: act3: { tbl3.apply(); }
+Eliminated node at line 93: test1.apply();
+Eliminated node at line 95: act1: { tbl1.apply(); }
+Eliminated node at line 96: act2: { tbl2.apply(); }
+Eliminated node at line 97: act3: { tbl3.apply(); }
 statement_count_before:21
 statement_count_after:13
 cyclomatic_complexity:27

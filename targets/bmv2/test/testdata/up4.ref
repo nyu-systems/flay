@@ -1,19 +1,19 @@
-Eliminated node at line 686: if (interfaces.apply().hit) {
-Eliminated node at line 683: if (!my_station.apply().hit) {
-Eliminated node at line 437: routes_v4.apply();
-Eliminated node at line 401: acls.apply();
-Eliminated node at line 753: if (std_meta.egress_port == 255) {
-Replaced node at line 565: local_meta.ue_addr : exact @name("ue_address") ; with 0
-Replaced node at line 566: local_meta.application_id: exact @name("app_id") ; with 0
-Replaced node at line 577: local_meta.ue_addr : exact @name("ue_address") ; with 0
-Replaced node at line 578: local_meta.application_id: exact @name("app_id") ; with 0
-Replaced node at line 592: local_meta.slice_id : exact @name("slice_id") ; with 0
-Replaced node at line 593: local_meta.inet_addr : lpm @name("app_ip_addr") ; with 0
-Replaced node at line 594: local_meta.inet_l4_port: range @name("app_l4_port") ; with 0
-Replaced node at line 595: local_meta.ip_proto : ternary @name("app_ip_proto") ; with 0
-Replaced node at line 610: local_meta.tunnel_peer_id: exact @name("tunnel_peer_id") ; with 0
-Replaced node at line 379: local_meta.src_iface : ternary @name("src_iface") ; with 0
-Replaced node at line 753: if (std_meta.egress_port == 255) { with 0
+Eliminated node at line 692: if (interfaces.apply().hit) {
+Eliminated node at line 689: if (!my_station.apply().hit) {
+Eliminated node at line 443: routes_v4.apply();
+Eliminated node at line 407: acls.apply();
+Eliminated node at line 759: if (std_meta.egress_port == 255) {
+Replaced node at line 571: local_meta.ue_addr : exact @name("ue_address") ; with 0
+Replaced node at line 572: local_meta.application_id: exact @name("app_id") ; with 0
+Replaced node at line 583: local_meta.ue_addr : exact @name("ue_address") ; with 0
+Replaced node at line 584: local_meta.application_id: exact @name("app_id") ; with 0
+Replaced node at line 598: local_meta.slice_id : exact @name("slice_id") ; with 0
+Replaced node at line 599: local_meta.inet_addr : lpm @name("app_ip_addr") ; with 0
+Replaced node at line 600: local_meta.inet_l4_port: range @name("app_l4_port") ; with 0
+Replaced node at line 601: local_meta.ip_proto : ternary @name("app_ip_proto") ; with 0
+Replaced node at line 616: local_meta.tunnel_peer_id: exact @name("tunnel_peer_id") ; with 0
+Replaced node at line 385: local_meta.src_iface : ternary @name("src_iface") ; with 0
+Replaced node at line 759: if (std_meta.egress_port == 255) { with 0
 statement_count_before:236
 statement_count_after:194
 cyclomatic_complexity:81

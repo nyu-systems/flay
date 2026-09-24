@@ -1,4 +1,4 @@
-Eliminated node at line 47: debug_table.apply();
+Eliminated node at line 53: debug_table.apply();
 statement_count_before:5
 statement_count_after:4
 cyclomatic_complexity:2

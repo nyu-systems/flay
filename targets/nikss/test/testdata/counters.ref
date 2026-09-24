@@ -1,4 +1,4 @@
-Replaced node at line 74: tbl_fwd.apply(); with do_forward(1);
+Replaced node at line 64: tbl_fwd.apply(); with do_forward(1);
 statement_count_before:21
 statement_count_after:21
 cyclomatic_complexity:2

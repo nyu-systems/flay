@@ -1,6 +1,6 @@
-Eliminated node at line 164: drop_tbl.apply();
-Replaced node at line 187: round_tbl.apply(); with read_round();
-Replaced node at line 154: key = { meta.local_metadata.set_drop : exact; } with 0
+Eliminated node at line 155: drop_tbl.apply();
+Replaced node at line 178: round_tbl.apply(); with read_round();
+Replaced node at line 145: key = { meta.local_metadata.set_drop : exact; } with 0
 statement_count_before:14
 statement_count_after:13
 cyclomatic_complexity:5

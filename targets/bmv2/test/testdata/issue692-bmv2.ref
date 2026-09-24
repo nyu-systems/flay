@@ -1,4 +1,4 @@
-Replaced node at line 19: transition select(parsedHdr.hstack.next.y) { with 0
+Replaced node at line 25: transition select(parsedHdr.hstack.next.y) { with 0
 statement_count_before:2
 statement_count_after:1
 cyclomatic_complexity:1

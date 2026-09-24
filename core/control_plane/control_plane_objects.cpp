@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <utility>
 
-#include "backends/p4tools/common/control_plane/symbolic_variables.h"
+#include "backends/p4tools/common/lib/symbolic_variables.h"
 #include "backends/p4tools/common/lib/variables.h"
 #include "backends/p4tools/modules/flay/core/control_plane/substitute_variable.h"
 #include "backends/p4tools/modules/flay/core/lib/simplify_expression.h"
@@ -31,7 +31,7 @@ TableMatchKeys
 **************************************************************************************************/
 
 TableMatchKey::TableMatchKey(cstring tableName, cstring name)
-    : _tableName(tableName), _name(name){};
+    : _tableName(tableName), _name(name) {};
 
 cstring TableMatchKey::tableName() const { return _tableName; }
 
@@ -242,8 +242,9 @@ Z3ControlPlaneAssignmentSet TableMatchEntry::z3ActionAssignment() const {
 
 bool TableMatchEntry::operator<(const ControlPlaneItem &other) const {
     // Table match entries are only compared based on the match expression.
-    return typeid(*this) == typeid(other) ? compare(_matches, other.as<TableMatchEntry>()._matches)
-                                          : typeid(*this).hash_code() < typeid(other).hash_code();
+    return typeid(*this) == typeid(other)
+               ? structuralCompare(_matches, other.as<TableMatchEntry>()._matches) < 0
+               : typeid(*this).hash_code() < typeid(other).hash_code();
 }
 
 ControlPlaneAssignmentSet TableMatchEntry::computeControlPlaneAssignments() const {
@@ -268,7 +269,8 @@ TableDefaultAction::TableDefaultAction(ControlPlaneAssignmentSet actionAssignmen
 bool TableDefaultAction::operator<(const ControlPlaneItem &other) const {
     // Table match entries are only compared based on the match expression.
     return typeid(*this) == typeid(other)
-               ? compare(_actionAssignment, other.as<TableDefaultAction>()._actionAssignment)
+               ? structuralCompare(_actionAssignment,
+                                   other.as<TableDefaultAction>()._actionAssignment) < 0
                : typeid(*this).hash_code() < typeid(other).hash_code();
 }
 

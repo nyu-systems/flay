@@ -100,7 +100,7 @@ bool FlayStepper::preorder(const IR::AssignmentStatement *assign) {
     auto &resolver = createExpressionResolver();
     right = resolver.computeResult(right);
 
-    if (right->is<IR::StructExpression>() || right->is<IR::HeaderStackExpression>()) {
+    if (right->is<IR::StructExpression>() || right->is<IR::BaseListExpression>()) {
         executionState.assignStructLike(left, right);
         return false;
     }

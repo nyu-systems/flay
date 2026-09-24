@@ -1,5 +1,5 @@
-Eliminated node at line 46: action_1: {
-Eliminated node at line 49: action_2: {
+Eliminated node at line 52: action_1: {
+Eliminated node at line 55: action_2: {
 statement_count_before:4
 statement_count_after:3
 cyclomatic_complexity:5

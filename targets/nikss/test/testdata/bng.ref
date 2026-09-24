@@ -1,19 +1,17 @@
-Replaced node at line 527: ingress_port_vlan.apply(); with deny();
-Replaced node at line 528: fwd_classifier.apply(); with set_forwarding_type(0);
-Eliminated node at line (unknown): { if (local_metadata.fwd_type == 2) {
-    routing_v4_0/routing_v4.apply(); }
-  next_vlan_0/next_vlan.apply(); }
-Replaced node at line 540: t_line_map.apply(); with set_line(0);
-Eliminated node at line 546: return;
-Eliminated node at line 545: if(t_pppoe_cp.apply().hit) {
-Eliminated node at line 558: if (t_line_session_map.apply().hit) {
-Eliminated node at line 558: if (t_line_session_map.apply().hit) {
+Replaced node at line 517: ingress_port_vlan.apply(); with deny();
+Replaced node at line 518: fwd_classifier.apply(); with set_forwarding_type(0);
+Eliminated node at line 520: if (local_metadata.skip_forwarding == false) {
+Replaced node at line 530: t_line_map.apply(); with set_line(0);
+Eliminated node at line 536: return;
+Eliminated node at line 535: if(t_pppoe_cp.apply().hit) {
+Eliminated node at line 548: if (t_line_session_map.apply().hit) {
+Eliminated node at line 548: if (t_line_session_map.apply().hit) {
 Eliminated node at line (unknown): 
-Eliminated node at line 577: hdr.bmd.push_double_vlan = local_metadata.push_double_vlan == true ? 8w1 : 8w0;
-Replaced node at line 657: egress_vlan.apply(); with drop_3/drop();
-Replaced node at line 465: local_metadata.bng.line_id : exact @name("line_id"); with 0
-Replaced node at line 491: local_metadata.bng.line_id : exact @name("line_id"); with 0
-Replaced node at line 512: local_metadata.bng.line_id : ternary @name("line_id"); with 0
+Eliminated node at line 567: hdr.bmd.push_double_vlan = local_metadata.push_double_vlan == true ? 8w1 : 8w0;
+Replaced node at line 647: egress_vlan.apply(); with drop_3/drop();
+Replaced node at line 455: local_metadata.bng.line_id : exact @name("line_id"); with 0
+Replaced node at line 481: local_metadata.bng.line_id : exact @name("line_id"); with 0
+Replaced node at line 502: local_metadata.bng.line_id : ternary @name("line_id"); with 0
 statement_count_before:153
 statement_count_after:147
 cyclomatic_complexity:49

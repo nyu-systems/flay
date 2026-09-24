@@ -1,5 +1,5 @@
-Eliminated node at line 21: new_val = 32w232;
-Replaced node at line 19: if (not_initialized.a < 6) { with 0
+Eliminated node at line 27: new_val = 32w232;
+Replaced node at line 25: if (not_initialized.a < 6) { with 0
 statement_count_before:6
 statement_count_after:5
 cyclomatic_complexity:1

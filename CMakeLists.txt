@@ -38,7 +38,9 @@ set(FLAY_SOURCES
 set(FLAY_GTEST_SOURCES
   ${P4C_SOURCE_DIR}/test/gtest/helpers.cpp
   ${P4C_SOURCE_DIR}/test/gtest/gtestp4c.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/test/core/execution_state_test.cpp
   ${CMAKE_CURRENT_LIST_DIR}/test/core/simplify_expression_test.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/test/core/structural_compare_test.cpp
 )
 
 # Flay libraries.

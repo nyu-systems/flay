@@ -1,6 +1,6 @@
-Eliminated node at line 25: val = 8w2;
-Eliminated node at line 43: simple_table.apply();
-Replaced node at line 36: tmp_key : exact @name("bKiScA") ; with 2
+Eliminated node at line 31: val = 8w2;
+Eliminated node at line 49: simple_table.apply();
+Replaced node at line 42: tmp_key : exact @name("bKiScA") ; with 2
 statement_count_before:9
 statement_count_after:7
 cyclomatic_complexity:2

@@ -1,4 +1,4 @@
-Eliminated node at line 91: if (istd.packet_path == PSA_PacketPath_t.CLONE_I2E) {
+Eliminated node at line 81: if (istd.packet_path == PSA_PacketPath_t.CLONE_I2E) {
 statement_count_before:19
 statement_count_after:18
 cyclomatic_complexity:2

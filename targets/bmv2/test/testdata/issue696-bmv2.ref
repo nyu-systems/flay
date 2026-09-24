@@ -1,6 +1,6 @@
-Eliminated node at line 91: bit<32> inc = _pred ? 32w1 : 0;
-Eliminated node at line 92: debug.write(0, _pred ? 32w1 : 32w0); // Print _pred
-Replaced node at line 90: bool _pred = (val.field1 != 0); with 0
+Eliminated node at line 97: bit<32> inc = _pred ? 32w1 : 0;
+Eliminated node at line 98: debug.write(0, _pred ? 32w1 : 32w0); // Print _pred
+Replaced node at line 96: bool _pred = (val.field1 != 0); with 0
 statement_count_before:16
 statement_count_after:14
 cyclomatic_complexity:2

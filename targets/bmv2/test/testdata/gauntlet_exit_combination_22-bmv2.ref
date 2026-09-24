@@ -1,5 +1,5 @@
-Eliminated node at line 40: h.eth_hdr.eth_type = (h.eth_hdr.eth_type == 4 ? (tbl.apply().hit ? 16w1 : 16w2) : 16w3);
-Eliminated node at line 40: h.eth_hdr.eth_type = (h.eth_hdr.eth_type == 4 ? (tbl.apply().hit ? 16w1 : 16w2) : 16w3);
+Eliminated node at line 46: h.eth_hdr.eth_type = (h.eth_hdr.eth_type == 4 ? (tbl.apply().hit ? 16w1 : 16w2) : 16w3);
+Eliminated node at line 46: h.eth_hdr.eth_type = (h.eth_hdr.eth_type == 4 ? (tbl.apply().hit ? 16w1 : 16w2) : 16w3);
 statement_count_before:11
 statement_count_after:7
 cyclomatic_complexity:5

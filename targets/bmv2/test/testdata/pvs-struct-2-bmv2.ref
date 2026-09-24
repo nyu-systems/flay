@@ -1,5 +1,5 @@
-Eliminated node at line 51: t.apply();
-Replaced node at line 48: key = { meta.data[0].da : exact;} with 0
+Eliminated node at line 57: t.apply();
+Replaced node at line 54: key = { meta.data[0].da : exact;} with 0
 statement_count_before:2
 statement_count_after:1
 cyclomatic_complexity:2

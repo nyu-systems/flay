@@ -208,7 +208,6 @@ def rx_iteration(
 
 
 class PerfTest(P4EbpfTest):
-
     def setUp(self) -> None:
         super().setUp()
         self.p4info = Path(ptfutils.test_param_get("p4info"))

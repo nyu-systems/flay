@@ -1,5 +1,5 @@
-Eliminated node at line 77: if (hdr.ipv4.isValid()) {
-Replaced node at line 67: hdr.ipv4.dstAddr : exact; with 0
+Eliminated node at line 67: if (hdr.ipv4.isValid()) {
+Replaced node at line 57: hdr.ipv4.dstAddr : exact; with 0
 statement_count_before:2
 statement_count_after:1
 cyclomatic_complexity:2

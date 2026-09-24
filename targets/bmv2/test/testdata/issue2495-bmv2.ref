@@ -1,5 +1,5 @@
-Eliminated node at line 38: } else {
-Eliminated node at line 36: if (dummy_table.apply().miss) {
+Eliminated node at line 44: } else {
+Eliminated node at line 42: if (dummy_table.apply().miss) {
 statement_count_before:2
 statement_count_after:2
 cyclomatic_complexity:1

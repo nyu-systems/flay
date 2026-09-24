@@ -7,7 +7,7 @@
 #include <cstdlib>
 #include <optional>
 
-#include "backends/p4tools/common/control_plane/symbolic_variables.h"
+#include "backends/p4tools/common/lib/symbolic_variables.h"
 #include "backends/p4tools/modules/flay/core/control_plane/control_plane_item.h"
 #include "backends/p4tools/modules/flay/core/control_plane/control_plane_objects.h"
 #include "backends/p4tools/modules/flay/core/control_plane/protobuf_utils.h"

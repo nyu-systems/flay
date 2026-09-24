@@ -1,5 +1,5 @@
-Replaced node at line 106: guh.apply(); with hash_drop_decision();
-Eliminated node at line 107: debug_table.apply();
+Replaced node at line 97: guh.apply(); with hash_drop_decision();
+Eliminated node at line 98: debug_table.apply();
 statement_count_before:10
 statement_count_after:9
 cyclomatic_complexity:3

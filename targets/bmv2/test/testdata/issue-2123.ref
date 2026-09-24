@@ -1,13 +1,13 @@
-Eliminated node at line 114: rewrite_mac.apply();
-Eliminated node at line 186: port_mapping.apply();
-Eliminated node at line 187: bd.apply();
-Eliminated node at line 189: on_miss: {
-Eliminated node at line 194: nexthop.apply();
-Replaced node at line 109: meta.ingress_metadata.nexthop_index: exact; with 0
-Replaced node at line 139: meta.ingress_metadata.bd: exact; with 0
+Eliminated node at line 103: rewrite_mac.apply();
+Eliminated node at line 175: port_mapping.apply();
+Eliminated node at line 176: bd.apply();
+Eliminated node at line 178: on_miss: {
+Eliminated node at line 183: nexthop.apply();
+Replaced node at line 98: meta.ingress_metadata.nexthop_index: exact; with 0
+Replaced node at line 128: meta.ingress_metadata.bd: exact; with 0
+Replaced node at line 138: meta.ingress_metadata.vrf: exact; with 0
 Replaced node at line 149: meta.ingress_metadata.vrf: exact; with 0
-Replaced node at line 160: meta.ingress_metadata.vrf: exact; with 0
-Replaced node at line 171: meta.ingress_metadata.nexthop_index: exact; with 0
+Replaced node at line 160: meta.ingress_metadata.nexthop_index: exact; with 0
 statement_count_before:20
 statement_count_after:15
 cyclomatic_complexity:19

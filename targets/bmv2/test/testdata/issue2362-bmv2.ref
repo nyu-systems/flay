@@ -1,5 +1,5 @@
-Eliminated node at line 43: sub_table.apply().hit: exact @name("dummy_name") ;
-Eliminated node at line 49: simple_table.apply();
+Eliminated node at line 49: sub_table.apply().hit: exact @name("dummy_name") ;
+Eliminated node at line 55: simple_table.apply();
 statement_count_before:4
 statement_count_after:3
 cyclomatic_complexity:0

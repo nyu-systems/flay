@@ -1,9 +1,9 @@
-Eliminated node at line 325: ttl = headers.ipv4.ttl;
-Eliminated node at line 326: } else if (headers.ipv6.isValid()) {
-Eliminated node at line 329: acl_wbb_ingress_table.apply();
-Replaced node at line 309: headers.ethernet.ether_type : ternary @name("ether_type") @id(3) @sai_field(SAI_ACL_TABLE_ATTR_FIELD_ETHER_TYPE); with 0
-Replaced node at line 310: ttl : ternary @name("ttl") @id(4) @sai_field(SAI_ACL_TABLE_ATTR_FIELD_TTL); with 0
-Replaced node at line 311: headers.ipv4.header_checksum[11:0]: ternary @name("outer_vlan_id") @id(5) @sai_field(SAI_ACL_TABLE_ATTR_FIELD_OUTER_VLAN_ID); with 0
+Eliminated node at line 331: ttl = headers.ipv4.ttl;
+Eliminated node at line 332: } else if (headers.ipv6.isValid()) {
+Eliminated node at line 335: acl_wbb_ingress_table.apply();
+Replaced node at line 315: headers.ethernet.ether_type : ternary @name("ether_type") @id(3) @sai_field(SAI_ACL_TABLE_ATTR_FIELD_ETHER_TYPE); with 0
+Replaced node at line 316: ttl : ternary @name("ttl") @id(4) @sai_field(SAI_ACL_TABLE_ATTR_FIELD_TTL); with 0
+Replaced node at line 317: headers.ipv4.header_checksum[11:0]: ternary @name("outer_vlan_id") @id(5) @sai_field(SAI_ACL_TABLE_ATTR_FIELD_OUTER_VLAN_ID); with 0
 statement_count_before:11
 statement_count_after:8
 cyclomatic_complexity:7

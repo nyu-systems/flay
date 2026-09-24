@@ -1,6 +1,6 @@
-Eliminated node at line 99: log_msg("f() returned a valid header");
-Eliminated node at line 104: log_msg("g() returned a header_union with valid member h");
-Eliminated node at line 109: log_msg("h() returned a header stack with valid element 0");
+Eliminated node at line 90: log_msg("f() returned a valid header");
+Eliminated node at line 95: log_msg("g() returned a header_union with valid member h");
+Eliminated node at line 100: log_msg("h() returned a header stack with valid element 0");
 statement_count_before:16
 statement_count_after:13
 cyclomatic_complexity:16

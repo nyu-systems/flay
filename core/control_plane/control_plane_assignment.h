@@ -3,7 +3,11 @@
 
 #include <z3++.h>
 
+#include <algorithm>
+#include <tuple>
+
 #include "backends/p4tools/modules/flay/core/lib/z3_cache.h"
+#include "ir/compare.h"
 #include "ir/ir.h"
 #include "ir/node.h"
 
@@ -16,50 +20,32 @@ using ControlPlaneAssignmentPointerPair =
 using ControlPlaneAssignmentReferencePair =
     std::pair<std::reference_wrapper<const IR::SymbolicVariable>,
               std::reference_wrapper<const IR::Expression>>;
-struct IsSemanticallyLessPairComparator {
+/// Lexicographical structural ordering of a symbol and its assigned value.
+struct StructuralAssignmentLess {
     bool operator()(const ControlPlaneAssignmentPointerPair &s1,
                     const ControlPlaneAssignmentPointerPair &s2) const {
-        if (!s1.first->equiv(*s2.first)) {
-            return s1.first->isSemanticallyLess(*s2.first);
-        }
-        return s1.second->isSemanticallyLess(*s2.second);
+        return IR::structuralCompare(s1, s2) < 0;
     }
     bool operator()(const ControlPlaneAssignmentReferencePair &s1,
                     const ControlPlaneAssignmentReferencePair &s2) const {
-        if (!s1.first.get().equiv(s2.first)) {
-            return s1.first.get().isSemanticallyLess(s2.first);
-        }
-        return s1.second.get().isSemanticallyLess(s2.second);
+        return IR::structuralCompare(std::tie(s1.first.get(), s1.second.get()),
+                                     std::tie(s2.first.get(), s2.second.get())) < 0;
     }
 };
 
 using ControlPlaneAssignmentSet =
     ordered_map<std::reference_wrapper<const IR::SymbolicVariable>,
-                std::reference_wrapper<const IR::Expression>, IR::IsSemanticallyLessComparator>;
+                std::reference_wrapper<const IR::Expression>, IR::StructuralLess>;
 
-/// Compares two control plane assignment sets. Returns true if s1 is shorter than s2. Also returns
-/// true if a key in S1 is < S2's key or its value is < S2's value.
-inline bool compare(const ControlPlaneAssignmentSet &s1, const ControlPlaneAssignmentSet &s2) {
-    auto it = s2.begin();
-    for (const auto &el : s1) {
-        if (it == s2.end()) {
-            return false;
-        }
-        if (el.first.get().isSemanticallyLess(it->first)) {
-            return true;
-        }
-        if (it->first.get().isSemanticallyLess(el.first)) {
-            return false;
-        }
-        if (el.second.get().isSemanticallyLess(it->second)) {
-            return true;
-        }
-        if (it->second.get().isSemanticallyLess(el.second)) {
-            return false;
-        }
-        ++it;
-    }
-    return it != s2.end();
+/// Compare assignments lexicographically in insertion order, with keys before values.
+/// Structural equivalence, rather than equiv(), determines when to compare the next field.
+inline std::weak_ordering structuralCompare(const ControlPlaneAssignmentSet &s1,
+                                            const ControlPlaneAssignmentSet &s2) {
+    return std::lexicographical_compare_three_way(
+        s1.begin(), s1.end(), s2.begin(), s2.end(), [](const auto &a, const auto &b) {
+            return IR::structuralCompare(std::tie(a.first.get(), a.second.get()),
+                                         std::tie(b.first.get(), b.second.get()));
+        });
 }
 
 }  // namespace P4::P4Tools::Flay

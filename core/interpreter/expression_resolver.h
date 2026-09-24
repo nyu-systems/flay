@@ -54,7 +54,7 @@ class ExpressionResolver : public Inspector {
     bool preorder(const IR::Operation_Ternary *op) override;
     /// Mux is an Operation_Ternary, which can have side effects.
     bool preorder(const IR::Mux *mux) override;
-    bool preorder(const IR::ListExpression *listExpr) override;
+    bool preorder(const IR::BaseListExpression *listExpr) override;
     bool preorder(const IR::StructExpression *structExpr) override;
     bool preorder(const IR::MethodCallExpression *call) override;
 

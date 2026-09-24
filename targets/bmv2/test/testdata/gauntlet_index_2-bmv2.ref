@@ -1,4 +1,4 @@
-Eliminated node at line 50: simple_table.apply();
+Eliminated node at line 56: simple_table.apply();
 statement_count_before:12
 statement_count_after:11
 cyclomatic_complexity:1

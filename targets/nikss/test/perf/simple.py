@@ -12,7 +12,6 @@ ALL_PORTS = [PORT0, PORT1, PORT2, PORT3]
 
 
 class SimpleTest(P4EbpfTest):
-
     def runTest(self) -> None:
         # check no connectivity if switching rules are not installed
         pkt = b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"

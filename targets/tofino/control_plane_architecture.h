@@ -147,7 +147,7 @@ class P4RuntimeArchHandlerTofino final : public P4RuntimeArchHandlerIface {
     }
 
     void collectAssignmentStatement(P4RuntimeSymbolTableIface *,
-                                    const IR::AssignmentStatement *) override {}
+                                    const IR::BaseAssignmentStatement *) override {}
 
     void collectExternMethod(P4RuntimeSymbolTableIface *, const P4::ExternMethod *) override {}
 

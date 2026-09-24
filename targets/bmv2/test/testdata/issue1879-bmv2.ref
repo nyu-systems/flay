@@ -1,4 +1,4 @@
-Replaced node at line 172: bit<8> hdrLeft = meta.headerLen - meta.currPos; with 15
+
 statement_count_before:44
 statement_count_after:34
 cyclomatic_complexity:33

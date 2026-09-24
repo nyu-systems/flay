@@ -1,0 +1,8 @@
+
+statement_count_before:154
+statement_count_after:145
+cyclomatic_complexity:121
+num_parsers_paths:512
+num_updates_processed:0
+num_respecializations:0
+

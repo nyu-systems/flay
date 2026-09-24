@@ -1,9 +1,9 @@
-Eliminated node at line 122: debug_table_cksum1.apply();
-Replaced node at line 70: user_meta.fwd_meta.exp_etherType : exact; with 2048
-Replaced node at line 72: user_meta.fwd_meta.exp_x1 : exact; with 63487
-Replaced node at line 74: user_meta.fwd_meta.exp_x2 : exact; with 63487
-Replaced node at line 76: user_meta.fwd_meta.exp_x3 : exact; with 63487
-Replaced node at line 78: user_meta.fwd_meta.exp_x4 : exact; with 4294965247
+Eliminated node at line 113: debug_table_cksum1.apply();
+Replaced node at line 61: user_meta.fwd_meta.exp_etherType : exact; with 2048
+Replaced node at line 63: user_meta.fwd_meta.exp_x1 : exact; with 63487
+Replaced node at line 65: user_meta.fwd_meta.exp_x2 : exact; with 63487
+Replaced node at line 67: user_meta.fwd_meta.exp_x3 : exact; with 63487
+Replaced node at line 69: user_meta.fwd_meta.exp_x4 : exact; with 4294965247
 statement_count_before:19
 statement_count_after:18
 cyclomatic_complexity:5

@@ -1,9 +1,9 @@
-Eliminated node at line 73: ipv6_tbl.apply();
-Eliminated node at line 107: get_multicast_copy_out_bd.apply();
-Replaced node at line 108: send_frame.apply(); with drop();
-Replaced node at line 85: standard_metadata.mcast_grp : exact; with 0
-Replaced node at line 86: standard_metadata.egress_rid : exact; with 0
-Replaced node at line 99: meta.fwd.out_bd: exact; with 0
+Eliminated node at line 62: ipv6_tbl.apply();
+Eliminated node at line 96: get_multicast_copy_out_bd.apply();
+Replaced node at line 97: send_frame.apply(); with drop();
+Replaced node at line 74: standard_metadata.mcast_grp : exact; with 0
+Replaced node at line 75: standard_metadata.egress_rid : exact; with 0
+Replaced node at line 88: meta.fwd.out_bd: exact; with 0
 statement_count_before:16
 statement_count_after:14
 cyclomatic_complexity:8

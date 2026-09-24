@@ -1,6 +1,6 @@
-Eliminated node at line 50: indirect.apply();
-Eliminated node at line 51: indirect_ws.apply();
-Replaced node at line 43: key = { meta.hash1 : selector; } with 0
+Eliminated node at line 41: indirect.apply();
+Eliminated node at line 42: indirect_ws.apply();
+Replaced node at line 34: key = { meta.hash1 : selector; } with 0
 statement_count_before:4
 statement_count_after:2
 cyclomatic_complexity:6

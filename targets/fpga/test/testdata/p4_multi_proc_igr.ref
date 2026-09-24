@@ -1,7 +1,7 @@
-Eliminated node at line 96: forward.apply();
-statement_count_before:12
-statement_count_after:11
-cyclomatic_complexity:4
+Replaced node at line 103: forward.apply(); with loopPacket();
+statement_count_before:13
+statement_count_after:13
+cyclomatic_complexity:5
 num_parsers_paths:1
 num_updates_processed:0
 num_respecializations:0
